@@ -37,7 +37,9 @@
           <i class="ri-wechat-line"></i>
         </div>
         <div class="picon profile">
-          <img src="../../../public/assets/images/profile-picture.png" alt="profile">
+          <a href="../profile/">
+            <img src="../../../public/assets/images/profile-picture.png" alt="profile">
+          </a>
         </div>
       </div>
     </div>

@@ -3,8 +3,15 @@
   <p>
     LOGIN FORM
   </p>
+  <div class="alert-box">
+    <?php if (isset($_GET['Login_Failed']) == 1) : ?>
+      <div class="alert alert-danger">
+        Incorrect Email Or Password!
+      </div>
+    <?php endif ?>
+  </div>
   <div class="form-wrap">
-    <form action="">
+    <form action="../../App/controllers/login.php" method="POST">
       <div class="form-group">
         <input type="text" placeholder="Enter Your Email" name="email">
       </div>

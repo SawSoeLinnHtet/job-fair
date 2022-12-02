@@ -1,0 +1,16 @@
+{
+  "name": "job-for-you/job-for-you",
+  "authors": [
+    {
+      "name": "SawSoeLinnHtet",
+      "email": "hazeldoom520@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Models\\": "App/_classes/Models/",
+      "Helpers\\": "App/_classes/Helpers/"
+    }
+  }
+}

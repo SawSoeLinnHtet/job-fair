@@ -3,8 +3,20 @@
   <p>
     REGISTER FORM
   </p>
+  <div class="alert-box">
+    <?php if (isset($_GET['MatchPassword']) == 1) : ?>
+      <div class="alert alert-danger">
+        Password Doesn't Match!
+      </div>
+    <?php endif ?>
+    <?php if (isset($_GET['Registered']) == 1) : ?>
+      <div class="alert alert-success">
+        Register Success! Please <a href="./login.php">Login Here</a>
+      </div>
+    <?php endif ?>
+  </div>
   <div class="form-wrap">
-    <form action="">
+    <form action="../../App/controllers/register.php" method="POST">
       <div class="form-group">
         <input type="text" placeholder="Name" name="name">
       </div>
@@ -18,22 +30,24 @@
         <input type="password" placeholder="Confirm Password" name="confirm_password">
       </div>
       <div class="form-group">
+        <input type="text" placeholder="Phone Number" name="phone">
+      </div>
+      <div class="form-group">
         <input type="text" placeholder="Address" name="address">
       </div>
       <div class="form-group side">
-        <input type="text" placeholder="City" name="confirm_password">
-        <input type="text" placeholder="Postal Code" name="confirm_password">
+        <input type="text" placeholder="City" name="city">
+        <input type="number" placeholder="Postal Code" name="postal_code">
       </div>
       <div class="form-group">
         <button type="submit">
-          Login
+          Register
         </button>
       </div>
     </form>
   </div>
   <span>
     Already Account?
-    <a href="./login.php">Login Here</a>
-  </span>
+    <a href="./login.php">Login Here</a </span>
 </div>
 <?php include("layouts/footer.php") ?>

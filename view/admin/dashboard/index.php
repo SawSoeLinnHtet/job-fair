@@ -1,3 +1,9 @@
+<?php
+  include("../../../vendor/autoload.php");
+  use Helpers\Auth;
+
+  Auth::check();
+?>
 <?php include("../layouts/header.php") ?>
 
 <section class="main-content">
