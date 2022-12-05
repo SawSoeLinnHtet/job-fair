@@ -203,7 +203,7 @@ a{
   top: 0;
   right: 0;
   position: absolute;
-  padding: 10px 30px;
+  padding: 10px 10px;
   overflow-y: scroll;
   transition: .6s;
   background-color: rgba(224, 229, 255, .9);
@@ -227,8 +227,7 @@ a{
   border: none;
   padding: 10px;
   border-radius: 5px;
-  background-color: #f1f4f8;
-  width: 150px;
+
   color:#5073fb;
 }
 .cards{
@@ -394,18 +393,15 @@ a{
 .table{
   height: 200px;
 }
-table{
+.table table{
   width: 100%;
   text-align: center;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
-tr{
-  border-bottom: 1px solid #fbfbfb;
+.table table tr{
+  border-bottom: 1px solid #5073fb;
   padding: 5px;
-}
-tr:nth-child(even){
-  background-color: rgba(206, 172, 172, .5);
 }
 th,
 td{
@@ -414,15 +410,15 @@ td{
   font-size: 15px;
 }
 .view{
-  color: #5f5ce0;
+  color: #0804fc;
   margin-right: 20px;
 }
 .edit{
-  color: rgb(255, 99, 42);
+  color: rgb(255, 115, 0);
   margin-right: 20px;
 }
 .delete{
-  color: #e86786;
+  color: #ff0000;
 }
 .online{
   color: #009000;
@@ -534,11 +530,15 @@ td{
 .related_area{
   width: 100%;
   height: auto;
-  padding: 10px 5px;
+  min-height: 500px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 20px;
 }
 .related_area table tr th{
   font-weight: normal;
-  color: #e36ac8;
+  color: #000;
+  font-weight: bold;
   font-size: 13px;
 }
 .related_area table tr td{
@@ -562,7 +562,7 @@ td{
 }
 .related_area form .form-control .input-holder input{
   width: 100%;
-  border: 3px solid #e36ac8;
+  border: 1px solid #e36ac8;
   padding-block: 6px; 
   outline: none;
   background-color: #fafafa;
@@ -574,8 +574,8 @@ td{
   width: 690px;
   height: 40px;
   padding-left: 20px;
-  background-color: #ffffff;
-  border: 3px solid #e36ac8;
+  background-color: #fafafa;
+  border: 1px solid #e36ac8;
   border-radius: 10px;
   font-size: 13px;
   outline: none;
@@ -585,7 +585,7 @@ td{
   height: 150px;
   padding: 20px;
   background-color: #ffffff;
-  border: 3px solid #e36ac8;
+  border: 1px solid #e36ac8;
   border-radius: 10px;
   font-size: 13px;
   outline: none;
@@ -673,3 +673,182 @@ td{
   background-color: #3e8e41;
 }
 /* dropdown */
+
+/* detail */
+
+.detail-wrapper{
+ width: 100%;
+  height: auto;
+  padding-left: 30px;
+  padding-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.detail-wrapper .wrap{
+  flex-basis: 50%;
+  background-color: #ffffff;
+  padding: 20px;
+  position: relative;
+}
+.company-name{
+  font-size: 30px;
+  font-weight: bold;
+  color: #0f3ac5;
+  display: block;
+}
+.user-name{
+  font-size: 30px;
+  font-weight: bold;
+  color: #5f5ce0;
+}
+.user-role{
+  color: #20aa37;
+}
+.detail-img{
+  width: 150px;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, .7);
+  padding: 20px;
+}
+.detail-wrapper form input{
+  padding-inline: 10px;
+  padding-block: 5px;
+  background-color: rgba(80, 115, 251, .7);
+  outline: none;
+  color: #fafafa;
+}
+.detail-wrapper form button{
+  padding: 6px 10px;
+  outline: none;
+  background-color: rgba(95, 92, 224, .7);
+  border: none;
+  color: #fafafa;
+  font-weight: bold;
+}
+.detail-wrapper form button:hover{
+  background-color: rgb(95, 92, 224);
+}
+.detail-wrap table{
+  text-align: left;
+}
+.detail-2 table tr{
+  border: 5px solid #4CAF50 !important;
+}
+.detail-wrapper .wrap ul{
+  padding: 10px;
+  border-radius: 10px;
+}
+.detail-wrapper .wrap ul li{
+  font-size: 20px;
+  bottom: 0;
+  display: inline-block;
+}
+.detail-wrapper .wrap .contact i{
+  font-size: 30px;
+}
+.facebook{
+  color: rgb(37, 37, 250);
+}
+.instagram{
+  color: rgb(148, 6, 84);
+}
+.twitter{
+  color: rgb(18, 105, 139);
+}
+.whatsapp{
+  color: forestgreen;
+}
+/* detail */
+/* job profile */
+
+.job-profile{
+  width: 70%;
+  height: 150px;
+  background-color: #fff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, .7);
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+}
+.job-profile img{
+  width: 120px;
+  height: auto;
+  padding: 10px;
+}
+.job-profile .text{
+  padding: 5px;
+  flex-basis: 50%;
+}
+.job-profile .text .job-name{
+  color: rgb(12, 12, 12);
+  font-size: 25px;
+  font-weight: 700;
+}
+.job-profile .text .job-company{
+  color: rgb(153, 132, 132);
+  font-size: 20px;
+}
+.job-profile .text ul{
+  margin-top: 30px;
+  display: flex;
+  gap: 20px;
+}
+.job-profile .text ul li{
+  display: inline-block;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.job-profile .text ul li i{
+  display: inline-block;
+  font-size: 14px;
+  color:rgb(59, 58, 58);
+  margin-right: 10px;
+}
+.job-text{
+  color: #000;
+}
+.job-text ul li{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+.job-text ul li:first-child{
+  margin-top: 10px;
+}
+.long-text{
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+.long-text h2{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.long-text span{
+  display: block;
+  margin-top: 20px;
+}
+.long-text span ul{
+  margin-left: 20px;
+}
+.long-text span ul li{
+  list-style:square;
+  margin-bottom: 10px;
+}
+.detail-wrapper .updated{
+  font-size: 13px;
+  margin-left: 10px;
+  border: 1px solid #0804fc;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* job profile */

@@ -65,7 +65,10 @@
     public function findById($id){
       $statement = $this->db->prepare(
         "
-          SELECT * FROM users WHERE id = :id
+          SELECT users.*, roles.name AS role 
+          FROM users LEFT JOIN roles 
+          ON users.role_id = roles.id 
+          WHERE users.id = :id
         "
       );
 
@@ -134,6 +137,22 @@
         ":postal_code" => $postal_code,
         ":id" => $id
       ]);
+      return $statement->rowCount();
+    }
+    public function upload($id, $image){
+      $query = "
+        UPDATE users 
+        SET image = :image 
+        WHERE id = :id
+      ";
+
+      $statement = $this->db->prepare($query);
+
+      $statement->execute([
+        ":id" => $id,
+        ":image" => $image
+      ]);
+
       return $statement->rowCount();
     }
   }

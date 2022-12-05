@@ -12,8 +12,7 @@ class JobsTable
   {
     $this->db = $db->connect();
   }
-  public function insert($data)
-  {
+  public function insert($data){
     $query = "
         INSERT INTO jobs (
           name,

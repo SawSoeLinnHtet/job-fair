@@ -46,22 +46,20 @@ $types = $job_types_table->getAll();
       <div class="form-control">
         <label for="company">Company Name <span class="required">*</span> </label>
         <select name="company_id" id="company" value="<?= $job[0]->company_id ?>">
-          <option value="<?= $job[0]->company_id ?>">
-            <?= $job[0]->company_name ?>
-          </option>
           <?php foreach ($companies as $company) : ?>
-            <option value="<?= $company->id ?>"><?= $company->name ?></option>
+            <option value="<?= $company->id ?>" <?= $company->id == $job[0]->company_id ? 'selected' : ''; ?>>
+              <?= $company->name ?>
+            </option>
           <?php endforeach ?>
         </select>
       </div>
       <div class="form-control">
         <label for="category">Category <span class="required">*</span></label>
         <select name="category_id" id="company" value="<?= $job[0]->category_id ?>">
-          <option value="<?= $job[0]->category_id ?>">
-            <?= $job[0]->category_name ?>
-          </option>
           <?php foreach ($categories as $category) : ?>
-            <option value="<?= $category->id ?>"><?= $category->name ?></option>
+            <option value="<?= $category->id ?>" <?= $category->id == $job[0]->category_id ? 'selected' : ''; ?>>
+              <?= $category->name ?>
+            </option>
           <?php endforeach ?>
         </select>
       </div>
@@ -83,9 +81,13 @@ $types = $job_types_table->getAll();
       <div class="form-control">
         <label for="type">Job Type<span class="required">*</span></label>
         <select name="job_type_id" id="type" value="<?= $job[0]->job_type_id ?>">
-          <option value="<?= $job[0]->job_type_id ?>"><?= $job[0]->job_type_name ?></option>
           <?php foreach ($types as $type) : ?>
-            <option value="<?= $type->id ?>"><?= $type->name ?></option>
+            <option 
+              value="<?= $type->id ?>" 
+              <?= $type->id == $job[0]->job_type_id ? 'selected' : ''; ?>
+            >
+              <?= $type->name ?>
+            </option>
           <?php endforeach ?>
         </select>
       </div>

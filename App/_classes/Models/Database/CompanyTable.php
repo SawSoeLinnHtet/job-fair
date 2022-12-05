@@ -86,4 +86,17 @@ class  CompanyTable
     
     return $statement->rowCount();
   }
+  public function upload($id, $image){
+    $query = "
+      UPDATE companies SET image = :image WHERE id = :id
+    ";
+    $statement = $this->db->prepare($query);
+
+    $statement->execute([
+      ":id" => $id,
+      ":image" => $image
+    ]);
+
+    return $statement->rowCount();
+  }
 }
