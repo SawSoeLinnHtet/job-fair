@@ -1,11 +1,12 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
-  include("../../../vendor/autoload.php");
+include("../../../vendor/autoload.php");
 
-  use Models\Database\CompanyTable;
-  use Models\Database\MYSQL;
+use Models\Database\CompanyTable;
+use Models\Database\MYSQL;
 
-  $table = new CompanyTable(new MYSQL());
-  $company = $table->findById($_GET["id"]);
+$table = new CompanyTable(new MYSQL());
+$company = $table->findById($_GET["id"]);
 ?>
 
 <?php include("../layouts/header.php") ?>

@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -45,77 +46,6 @@ $user = $table->findById($_GET["id"]);
         ">User</a>
         </div>
       </div>
-      <table>
-        <tr>
-          <td>
-            EMAIL :
-          </td>
-          <td>
-            <?= $user[0]->email ?>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            PHONE NUMBER :
-          </td>
-          <td>
-            <?= $user[0]->phone_number ?>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            ADDRESS :
-          </td>
-          <td>
-            <?= $user[0]->address ?>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CITY :
-          </td>
-          <td>
-            <?= $user[0]->city ?>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            POSTAL CODE :
-          </td>
-          <td>
-            <?= $user[0]->postal_code ?>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CONTACT :
-          </td>
-          <td>
-            <ul>
-              <li>
-                <a href="#" class="contact">
-                  <i class="ri-facebook-box-fill facebook"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="contact">
-                  <i class="ri-instagram-line instagram"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="contact">
-                  <i class="ri-twitter-line twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="contact">
-                  <i class="ri-whatsapp-line whatsapp"></i>
-                </a>
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </table>
     </div>
   </div>
 </section>

@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -23,10 +24,9 @@ $company = $table->findById($_GET["id"]);
         <?= $company[0]->name ?>
       </span>
 
-      <img src="../../../public/assets/images/companies/<?= $company[0]->image ?? "company.png" ?>" alt="image" class="detail-img"> 
+      <img src="../../../public/assets/images/companies/<?= $company[0]->image ?? "company.png" ?>" alt="image" class="detail-img">
 
-      <form 
-        action="../../../App/controllers/companies/upload.php?id=<?= $_GET["id"] ?>" method="post" enctype="multipart/form-data">
+      <form action="../../../App/controllers/companies/upload.php?id=<?= $_GET["id"] ?>" method="post" enctype="multipart/form-data">
         <input type="file" name="cover_image">
         <button type="submit">
           Upload

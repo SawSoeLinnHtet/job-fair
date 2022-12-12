@@ -8,3 +8,15 @@
         ">User</a>
    </div>
  </div>
+ <a href="#" class="contact">
+   <i class="ri-facebook-box-fill facebook"></i>
+ </a>
+ <a href="#" class="contact">
+   <i class="ri-instagram-line instagram"></i>
+ </a>
+ <a href="#" class="contact">
+   <i class="ri-twitter-line twitter"></i>
+ </a>
+ <a href="#" class="contact">
+   <i class="ri-whatsapp-line whatsapp"></i>
+ </a>

@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 
 include("../../../vendor/autoload.php");
@@ -38,41 +39,39 @@ $categories = $table->getAll();
     <?php endif ?>
   </div>
   <div class="related_area">
-    <div class="table">
-      <table>
-        <thead>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Created At</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($categories as $i => $category) : ?>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Created At</th>
-            <th>Action</th>
+            <td>
+              <?= $i + 1 ?>
+            </td>
+            <td>
+              <?= $category->name ?>
+            </td>
+            <td>
+              <?= $category->created_at ?>
+            </td>
+            <td>
+              <a href="./edit.php?id=<?= $category->id ?>">
+                <i class="ri-edit-line edit"></i>
+              </a>
+              <a href="../../../App/controllers/categories/delete.php?id=<?= $category->id ?>">
+                <i class="ri-delete-bin-line delete"></i>
+              </a>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($categories as $i => $category) : ?>
-            <tr>
-              <td>
-                <?= $i + 1 ?>
-              </td>
-              <td>
-                <?= $category->name ?>
-              </td>
-              <td>
-                <?= $category->created_at ?>
-              </td>
-              <td>
-                <a href="./edit.php?id=<?= $category->id ?>">
-                  <i class="ri-edit-line edit"></i>
-                </a>
-                <a href="../../../App/controllers/categories/delete.php?id=<?= $category->id ?>">
-                  <i class="ri-delete-bin-line delete"></i>
-                </a>
-              </td>
-            </tr>
-          <?php endforeach ?>
-        </tbody>
-      </table>
-    </div>
+        <?php endforeach ?>
+      </tbody>
+    </table>
   </div>
 </section>
 

@@ -1,3 +1,16 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+include("../../../vendor/autoload.php");
+
+use Models\Database\JobsTable;
+use Models\Database\MYSQL;
+
+$table = new JobsTable(new MYSQL());
+
+$jobs = $table->getAll();
+
+$s_to_json = json_encode((array) $jobs);
+?>
 <?php include("../layouts/header.php") ?>
 
 <main>
@@ -58,368 +71,83 @@
           </div>
         </div>
         <div class="jobs-list">
-          <div class="job" onclick="showJobInfo()">
-            <div class="job-logo">
-              <img src="../../../public/assets/images/ananda.png" alt="">
-            </div>
-            <div class="job-description">
-              <div class="job-text-small">
-                <h5 class="company-name">
-                  Ananda BroadBand
-                </h5>
-                <p class="position">
-                  White Hacker
-                </p>
-                <p class="location-view">
-                  <span><i class="ri-map-pin-line"></i>Location</span>
-                  <span><i class="ri-eye-line"></i>Views</span>
-                </p>
-                <p class="post-info">
-                  <span>Today</span>/
-                  <span>Full-time</span>/
-                  <span>3 applied</span>
-                </p>
+          <?php foreach ($jobs as $job) : ?>
+            <div class="job show_job_info" data-id="<?= $job->id ?>">
+              <div class="job-logo">
+                <img src="../../../public/assets/images/companies/<?= $job->company_image ?? "company.png" ?>" alt="company image">
               </div>
-              <div class="position-info">
-                <p class="bookmark-info">
-                  <a href="">
-                    <span>
-                      <i class="ri-bookmark-3-line"></i>
+              <div class="job-description">
+                <div class="job-text-small">
+                  <h5 class="company-name">
+                    <?= $job->company_name ?>
+                  </h5>
+                  <p class="position">
+                    <?= $job->name ?>
+                  </p>
+                  <p class="location-view">
+                    <span><i class="ri-map-pin-line"></i><?= $job->address ?></span>
+                    <span><i class="ri-eye-line"></i>view</span>
+                  </p>
+                  <p class="post-info">
+                    <span>Today</span>/
+                    <span><?= $job->job_type ?></span>/
+                    <span>3 applied</span>
+                  </p>
+                </div>
+                <div class="position-info">
+                  <div class="related-info">
+                    <span class="team">
+                      Team
                     </span>
-                  </a>
-                  <a href="">
-                    <span>
-                      <i class="ri-information-fill"></i>
+                    <span class="team-name">
+                      Developer
                     </span>
-                  </a>
-                </p>
-                <p class="team">
-                  <span>Team</span>
-                </p>
-                <p class="which-team">
-                  <span>Networking</span>
-                </p>
-                <p class="salary">
-                  <span class="fee">$1000k<span class="time">/year</span></span>
-                </p>
+                    <span class="salary">
+                      <?= $job->salary ?>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="job" onclick="showJobInfo()">
-            <div class="job-logo">
-              <img src="../../../public/assets/images/ananda.png" alt="">
-            </div>
-            <div class="job-description">
-              <div class="job-text-small">
-                <h5 class="company-name">
-                  Ananda BroadBand
-                </h5>
-                <p class="position">
-                  White Hacker
-                </p>
-                <p class="location-view">
-                  <span><i class="ri-map-pin-line"></i>Location</span>
-                  <span><i class="ri-eye-line"></i>Views</span>
-                </p>
-                <p class="post-info">
-                  <span>Today</span>/
-                  <span>Full-time</span>/
-                  <span>3 applied</span>
-                </p>
-              </div>
-              <div class="position-info">
-                <p class="bookmark-info">
-                  <a href="">
-                    <span>
-                      <i class="ri-bookmark-3-line"></i>
-                    </span>
-                  </a>
-                  <a href="">
-                    <span>
-                      <i class="ri-information-fill"></i>
-                    </span>
-                  </a>
-                </p>
-                <p class="team">
-                  <span>Team</span>
-                </p>
-                <p class="which-team">
-                  <span>Networking</span>
-                </p>
-                <p class="salary">
-                  <span class="fee">$1000k<span class="time">/year</span></span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="job" onclick="showJobInfo()">
-            <div class="job-logo">
-              <img src="../../../public/assets/images/ananda.png" alt="">
-            </div>
-            <div class="job-description">
-              <div class="job-text-small">
-                <h5 class="company-name">
-                  Ananda BroadBand
-                </h5>
-                <p class="position">
-                  White Hacker
-                </p>
-                <p class="location-view">
-                  <span><i class="ri-map-pin-line"></i>Location</span>
-                  <span><i class="ri-eye-line"></i>Views</span>
-                </p>
-                <p class="post-info">
-                  <span>Today</span>/
-                  <span>Full-time</span>/
-                  <span>3 applied</span>
-                </p>
-              </div>
-              <div class="position-info">
-                <p class="bookmark-info">
-                  <a href="">
-                    <span>
-                      <i class="ri-bookmark-3-line"></i>
-                    </span>
-                  </a>
-                  <a href="">
-                    <span>
-                      <i class="ri-information-fill"></i>
-                    </span>
-                  </a>
-                </p>
-                <p class="team">
-                  <span>Team</span>
-                </p>
-                <p class="which-team">
-                  <span>Networking</span>
-                </p>
-                <p class="salary">
-                  <span class="fee">$1000k<span class="time">/year</span></span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="job" onclick="showJobInfo()">
-            <div class="job-logo">
-              <img src="../../../public/assets/images/ananda.png" alt="">
-            </div>
-            <div class="job-description">
-              <div class="job-text-small">
-                <h5 class="company-name">
-                  Ananda BroadBand
-                </h5>
-                <p class="position">
-                  White Hacker
-                </p>
-                <p class="location-view">
-                  <span><i class="ri-map-pin-line"></i>Location</span>
-                  <span><i class="ri-eye-line"></i>Views</span>
-                </p>
-                <p class="post-info">
-                  <span>Today</span>/
-                  <span>Full-time</span>/
-                  <span>3 applied</span>
-                </p>
-              </div>
-              <div class="position-info">
-                <p class="bookmark-info">
-                  <a href="">
-                    <span>
-                      <i class="ri-bookmark-3-line"></i>
-                    </span>
-                  </a>
-                  <a href="">
-                    <span>
-                      <i class="ri-information-fill"></i>
-                    </span>
-                  </a>
-                </p>
-                <p class="team">
-                  <span>Team</span>
-                </p>
-                <p class="which-team">
-                  <span>Networking</span>
-                </p>
-                <p class="salary">
-                  <span class="fee">$1000k<span class="time">/year</span></span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="job" onclick="showJobInfo()">
-            <div class="job-logo">
-              <img src="../../../public/assets/images/ananda.png" alt="">
-            </div>
-            <div class="job-description">
-              <div class="job-text-small">
-                <h5 class="company-name">
-                  Ananda BroadBand
-                </h5>
-                <p class="position">
-                  White Hacker
-                </p>
-                <p class="location-view">
-                  <span><i class="ri-map-pin-line"></i>Location</span>
-                  <span><i class="ri-eye-line"></i>Views</span>
-                </p>
-                <p class="post-info">
-                  <span>Today</span>/
-                  <span>Full-time</span>/
-                  <span>3 applied</span>
-                </p>
-              </div>
-              <div class="position-info">
-                <p class="bookmark-info">
-                  <a href="">
-                    <span>
-                      <i class="ri-bookmark-3-line"></i>
-                    </span>
-                  </a>
-                  <a href="">
-                    <span>
-                      <i class="ri-information-fill"></i>
-                    </span>
-                  </a>
-                </p>
-                <p class="team">
-                  <span>Team</span>
-                </p>
-                <p class="which-team">
-                  <span>Networking</span>
-                </p>
-                <p class="salary">
-                  <span class="fee">$1000k<span class="time">/year</span></span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="job" onclick="showJobInfo()">
-            <div class="job-logo">
-              <img src="../../../public/assets/images/ananda.png" alt="">
-            </div>
-            <div class="job-description">
-              <div class="job-text-small">
-                <h5 class="company-name">
-                  Ananda BroadBand
-                </h5>
-                <p class="position">
-                  White Hacker
-                </p>
-                <p class="location-view">
-                  <span><i class="ri-map-pin-line"></i>Location</span>
-                  <span><i class="ri-eye-line"></i>Views</span>
-                </p>
-                <p class="post-info">
-                  <span>Today</span>/
-                  <span>Full-time</span>/
-                  <span>3 applied</span>
-                </p>
-              </div>
-              <div class="position-info">
-                <p class="bookmark-info">
-                  <a href="">
-                    <span>
-                      <i class="ri-bookmark-3-line"></i>
-                    </span>
-                  </a>
-                  <a href="">
-                    <span>
-                      <i class="ri-information-fill"></i>
-                    </span>
-                  </a>
-                </p>
-                <p class="team">
-                  <span>Team</span>
-                </p>
-                <p class="which-team">
-                  <span>Networking</span>
-                </p>
-                <p class="salary">
-                  <span class="fee">$1000k<span class="time">/year</span></span>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="job" onclick="showJobInfo()">
-            <div class="job-logo">
-              <img src="../../../public/assets/images/ananda.png" alt="">
-            </div>
-            <div class="job-description">
-              <div class="job-text-small">
-                <h5 class="company-name">
-                  Ananda BroadBand
-                </h5>
-                <p class="position">
-                  White Hacker
-                </p>
-                <p class="location-view">
-                  <span><i class="ri-map-pin-line"></i>Location</span>
-                  <span><i class="ri-eye-line"></i>Views</span>
-                </p>
-                <p class="post-info">
-                  <span>Today</span>/
-                  <span>Full-time</span>/
-                  <span>3 applied</span>
-                </p>
-              </div>
-              <div class="position-info">
-                <p class="bookmark-info">
-                  <a href="">
-                    <span>
-                      <i class="ri-bookmark-3-line"></i>
-                    </span>
-                  </a>
-                  <a href="">
-                    <span>
-                      <i class="ri-information-fill"></i>
-                    </span>
-                  </a>
-                </p>
-                <p class="team">
-                  <span>Team</span>
-                </p>
-                <p class="which-team">
-                  <span>Networking</span>
-                </p>
-                <p class="salary">
-                  <span class="fee">$1000k<span class="time">/year</span></span>
-                </p>
-              </div>
-            </div>
-          </div>
+          <?php endforeach ?>
         </div>
       </div>
     </div>
     <div id="job-info">
+      <a href="#" class="bookmark">
+        <i class="ri-bookmark-3-fill"></i>
+      </a>
       <button class="closeBtn" onclick="closeInfo()">
-        <i class="ri-close-circle-fill"></i>
+        <i class="ri-close-fill"></i>
       </button>
       <div class="info-container">
         <div class="company-info-logo">
-          <img src="../../../public/assets/images/ananda.png" alt="employee-logo">
-          <h4>White Hacker, Mini</h4>
-          <p>CompanyName, Location</p>
+          <img id="company_logo" alt="employee-logo">
+          <h4 id="job_name"></h4>
+          <p id="job_location"></p>
         </div>
         <div class="job-text">
+
+          <p>
+            Salary - <span id="salary" class="salary"> 500 USD</span>
+          </p>
+          <p>
+            Company Address - <span id="company_address"> Hong Koung, China</span>
+          </p>
+          <p>
+            Open To - <span id="gender"> Male</span>
+          </p>
+          <p>
+            Job Type - <span id="job_type"> Part Time</span>
+          </p>
+          <p>
+            Close On - <span id="close_date"> 12-10-2002</span>
+          </p>
           <!-- Minimum Requirement -->
           <p>Minimum Requirement</p>
-          <ul>
-            <li>
-              Fluent in reading, writing, and speaking English.
-            </li>
-            <li>
-              Minimum of 2 years of professional experience working in a modern laboratory setting.
-            </li>
-            <li>
-              Knowledge and understanding of the best international lab safety and practices.
-            </li>
-            <li>
-              Candidate must possess strong attention-to-detail and organizational skills.
-            </li>
-            <li>
-              Skills: Candidate must be team-orientated and collaborative, with strong interpersonal skills.
-            </li>
-          </ul>
+          <span id="job_requirement">
+
+          </span>
           <!-- Preferred Qualification -->
           <p>Preferred Qualification</p>
           <ul>
@@ -433,10 +161,8 @@
         </div>
         <div class="job-about">
           <!-- Minimum Requirement -->
-          <p>Minimum Requirement</p>
-          <span>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta delectus temporibus quod corrupti debitis beatae quasi, nesciunt excepturi ullam optio ipsa dignissimos est consectetur repellendus. Laboriosam ipsum ratione nam cum.
-          </span>
+          <p>Description</p>
+          <span id="job_description"></span>
           <a href="#">
             <p>Read More<i class="ri-arrow-down-s-fill"></i></p>
           </a>
@@ -451,5 +177,67 @@
     </div>
   </div>
 </main>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $(".show_job_info").on("click", function(e) {
+      e.preventDefault()
+      var job_id = $(this).data("id")
+
+      $.ajax({
+        url: "../../../App/controllers/jobs/detail.php",
+        type: "GET",
+        data: {
+          "job_id": job_id
+        },
+        success: function(response) {
+          var data = JSON.parse(response);
+
+          if (data.status == 1) {
+            var job_detail = data.data[0];
+            var image = job_detail.company_image == null ? "company.png" : job_detail.company_image
+
+            var src = "../../../public/assets/images/companies/" + image
+
+            $("#company_logo").attr("src", src)
+            $("#job_name").text(job_detail.name)
+            $("#salary").text(job_detail.salary)
+            $("#company_address").text(job_detail.company_address)
+            $("#gender").text(job_detail.gender)
+            $("#job_type").text(job_detail.job_type_name)
+            $("#close_date").text(job_detail.close_date)
+            $("#job_location").text(job_detail.address)
+            $("#job_requirement").text(job_detail.requirements)
+            $("#job_description").text(job_detail.description)
+
+            showJobInfo();
+          }
+        },
+        error: function(error) {
+
+        }
+      })
+    })
+  });
+  var find_jobs_wrap = document.getElementById("find-jobs-wrap")
+  var job_info = document.getElementById("job-info")
+  var jobs_wrap = document.getElementById("jobs-wrap")
+
+  function showJobInfo() {
+    find_jobs_wrap.classList.add("find-jobs-wrap-65")
+    job_info.classList.add("show")
+  }
+
+  function closeInfo() {
+    find_jobs_wrap.classList.remove("find-jobs-wrap-65")
+    job_info.classList.remove("show")
+  }
+  window.onclick = (e) => {
+    if (e.target == jobs_wrap) {
+      job_info.style.display = "none"
+      console.log("hi")
+    }
+  }
+</script>
 
 <?php include("../layouts/footer.php") ?>

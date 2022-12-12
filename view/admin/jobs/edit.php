@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -82,10 +83,7 @@ $types = $job_types_table->getAll();
         <label for="type">Job Type<span class="required">*</span></label>
         <select name="job_type_id" id="type" value="<?= $job[0]->job_type_id ?>">
           <?php foreach ($types as $type) : ?>
-            <option 
-              value="<?= $type->id ?>" 
-              <?= $type->id == $job[0]->job_type_id ? 'selected' : ''; ?>
-            >
+            <option value="<?= $type->id ?>" <?= $type->id == $job[0]->job_type_id ? 'selected' : ''; ?>>
               <?= $type->name ?>
             </option>
           <?php endforeach ?>

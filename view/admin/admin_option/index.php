@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <!DOCTYPE html>
 <html lang="en">
 

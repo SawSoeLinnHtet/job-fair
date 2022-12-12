@@ -199,14 +199,12 @@ a{
 /* ---main-content--- */
 .main-content{
   width: calc(100% - 300px);
-  height: 100%;
   top: 0;
   right: 0;
   position: absolute;
-  padding: 10px 10px;
-  overflow-y: scroll;
+  padding: 10px 20px;
   transition: .6s;
-  background-color: rgba(224, 229, 255, .9);
+  background-color: #fbfbfb;
 }
 .main-content.active{
   width: calc(100% - 105px);
@@ -386,29 +384,6 @@ a{
 }
 
 /* ---recent-users--- */
-
-.recent-users{
-  margin-bottom: 20px;
-}
-.table{
-  height: 200px;
-}
-.table table{
-  width: 100%;
-  text-align: center;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-.table table tr{
-  border-bottom: 1px solid #5073fb;
-  padding: 5px;
-}
-th,
-td{
-  padding-inline: 10px;
-  padding-block: 10px;
-  font-size: 15px;
-}
 .view{
   color: #0804fc;
   margin-right: 20px;
@@ -447,9 +422,6 @@ td{
   .search-notification-profile{
     padding: 0 20px;
     margin-left: auto;
-  }
-  .main-content{
-    padding: 0 20px;
   }
   .sidebar{
     padding: 20px;
@@ -497,7 +469,7 @@ td{
 }
 .related_header{
   width: 100%;
-  height: auto;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -529,85 +501,103 @@ td{
 }
 .related_area{
   width: 100%;
-  height: auto;
-  min-height: 500px;
   padding: 10px;
   background-color: rgb(255, 255, 255);
+  box-shadow: 1px 0 11px 3px #c7c7c7;
   margin-top: 20px;
 }
+.related_area table{
+  width: 100%;
+  text-align: center;
+}
+.related_area table tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+.related_area table tr:hover{
+  background-color: #ddd;
+}
 .related_area table tr th{
+  background-color: #5f5ce0;
   font-weight: normal;
   color: #000;
   font-weight: bold;
   font-size: 13px;
+  padding: 10px;
 }
 .related_area table tr td{
   font-size: 12px;
+  padding: 10px;
+}
+.related_area form{
+  width: 100%;
+  padding: 20px;
 }
 .related_area form .form-control{
+  width: 100%;
+  height: auto;
+  padding: 10px;
   display: flex;
-  gap: 50px;
-  margin-top: 20px;
+  margin-top: 10px;
+  align-items: center;
+  gap: 10px;
 }
 .related_area form .form-control label{
-  flex-basis: 20%;
+  width: 20%;
   text-align: right;
-  font-size: .80rem;
-  font-weight: 700;
-  margin-top: 10px;
+  margin-right: 20px;
+  color: #5f5ce0;
+  font-weight: bold;
 }
 .related_area form .form-control .input-holder{
-  flex-basis: 70%;
-  padding: 3px;
+  width: 70%;
 }
 .related_area form .form-control .input-holder input{
-  width: 100%;
-  border: 1px solid #e36ac8;
-  padding-block: 6px; 
-  outline: none;
-  background-color: #fafafa;
-  padding-inline: 20px;
-  border-radius: 10px;
-  font-size: 13px;
-}
-.related_area form .form-control select{
-  width: 690px;
+  width: 700px;
   height: 40px;
   padding-left: 20px;
-  background-color: #fafafa;
-  border: 1px solid #e36ac8;
-  border-radius: 10px;
-  font-size: 13px;
   outline: none;
+  border-radius: 5px;
+  border: 1px solid #5f5ce0;
 }
 .related_area form .form-control .input-holder textarea{
-  width: 690px;
-  height: 150px;
-  padding: 20px;
-  background-color: #ffffff;
-  border: 1px solid #e36ac8;
-  border-radius: 10px;
-  font-size: 13px;
+  width: 700px;
+  height: 100px;
+  padding-left: 20px;
+  padding-top: 10px;
   outline: none;
+  border-radius: 5px;
+  border: 1px solid #5f5ce0;
+}
+.related_area form .form-control .input-holder select{
+  width: 700px;
+  height: 40px;
+  padding-left: 20px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #5f5ce0;
+  background-color: rgba(95, 92, 224, .3);
 }
 .related_area form .form-control button{
-  padding: 6px 30px;
-  background-color: rgba(227, 106, 200, .9);
-  border-radius: 10px;
-  color: #fff;
-  font-weight: 800;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: 55px;
-  margin-bottom: 20px;
-  cursor: pointer;
+  width: 100px;
+  height: 40px;
+  float: right;
+  display: block;
   border: none;
+  cursor: pointer;
+  background-color: #5f5ce0;
+  color: #fafafa;
+  border-radius: 5px;
 }
 .related_area form .form-control button:hover{
-  background-color: rgba(227, 106, 200, .5);
+  background-color: rgba(95, 92, 224, .5);
 }
 .required{
   color: #ff0000;
+}
+.error{
+  font-size: 12px;
+  font-weight: normal !important;
+  color: #ff0000 !important;
 }
 .alert-box{
   margin-top: 20px;
@@ -738,16 +728,19 @@ td{
   border: 5px solid #4CAF50 !important;
 }
 .detail-wrapper .wrap ul{
-  padding: 10px;
   border-radius: 10px;
 }
 .detail-wrapper .wrap ul li{
   font-size: 20px;
   bottom: 0;
   display: inline-block;
+  margin-left: 10px;
+}
+.detail-wrapper .wrap ul li:first-child{
+  margin-left: 0px;
 }
 .detail-wrapper .wrap .contact i{
-  font-size: 30px;
+  font-size: 20px;
 }
 .facebook{
   color: rgb(37, 37, 250);

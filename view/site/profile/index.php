@@ -1,4 +1,3 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -13,9 +12,5 @@ $table = new UsersTable(new MYSQL());
 $user = $table->findById($session_user->id);
 ?>
 <?php include("../layouts/header.php") ?>
-
-<section class="main-content">
-  <?php var_dump($user[0]->name) ?>
-</section>
-
+  <?php var_dump($user) ?>
 <?php include("../layouts/footer.php") ?>

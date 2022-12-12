@@ -49,6 +49,7 @@ class JobsTable
     $query = "
       SELECT jobs.*, 
       companies.name AS company_name,
+      companies.image AS company_image,
       categories.name AS category_name, 
       job_types.name AS job_type_name
       FROM jobs 
@@ -67,6 +68,8 @@ class JobsTable
     $query = "
       SELECT jobs.*, 
       companies.name AS company_name,
+      companies.image AS company_image,
+      companies.location AS company_address,
       categories.name AS category_name, 
       job_types.name AS job_type_name
       FROM jobs 
@@ -131,5 +134,18 @@ class JobsTable
     } catch (PDOException $e) {
       return $e->getMessage();
     }
+  }
+    public function findByCategory($category_id){
+    $query = "
+      SELECT * FROM jobs 
+      WHERE category_id = :category_id
+    ";
+    $statement = $this->db->prepare($query);
+
+    $statement->execute([
+      ":category_id" => $category_id
+    ]);
+
+    return $statement->fetchAll();
   }
 }

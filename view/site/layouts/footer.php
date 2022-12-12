@@ -80,6 +80,7 @@
   </footer>
   <!-- ---site---footer---static--- -->
   </section>
+  <script src="../../../public/js/site_external.js"></script>
   </body>
 
   </html>

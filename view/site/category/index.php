@@ -1,3 +1,14 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+
+<?php
+  use Models\Database\JobsTable;
+  use Models\Database\CategoryTable;
+  use Models\Database\MYSQL;
+
+  $table = new CategoryTable(new MYSQL());
+  $job_table = new JobsTable(new MYSQL());
+  $categories = $table->getAll();
+?>
 <?php include("../layouts/header.php") ?>
 <main>
   <div class="category-search-bar">
@@ -14,17 +25,20 @@
     </form>
   </div>
   <div class="categories-list">
-    <div class="categories-list-wrapper">
-      <div class="category">
-        <img src="../../../public/assets/images/categories/technology.png" alt="category image">
-        <a href="#" class="category-name">
-          <p>
-            Technology
-          </p>
+    <div class="categories-wrapper">
+      <?php foreach($categories as $category): ?>
+      <div>
+        <a href="#" class="category">
+          <img src="../../../public/assets/images/categories/technology.png" alt="category image">
+          <div class="category_box-text">
+            <p>
+              <?= $category->name ?> 
+              <span>(<?= count($job_table->findByCategory($category->id)) ?>)<span>
+            </p>
+          </div>
         </a>
-        <span class="quantity">13</span>
       </div>
+      <?php endforeach ?>
     </div>
-  </div>
 </main>
 <?php include("../layouts/footer.php") ?>

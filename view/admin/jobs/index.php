@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -31,64 +32,58 @@ $jobs = $table->getAll();
     <?php endif ?>
   </div>
   <div class="related_area">
-    <div class="table">
-      <table>
-        <thead>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Company Name</th>
+          <th>Category</th>
+          <th>Gender</th>
+          <th>Job Type</th>
+          <th>Last Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($jobs as $i => $job) : ?>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Company Name</th>
-            <th>Category</th>
-            <th>Gender</th>
-            <th>Salary</th>
-            <th>Job Type</th>
-            <th>Last Date</th>
-            <th>Action</th>
+            <td>
+              <?= $i + 1 ?>
+            </td>
+            <td>
+              <?= $job->name ?>
+            </td>
+            <td>
+              <?= $job->company_name ?>
+            </td>
+            <td>
+              <?= $job->category_name ?>
+            </td> 
+            <td>
+              <?= $job->gender ?>
+            </td> 
+            <td>
+              <?= $job->job_type_name ?>
+            </td>
+            <td>
+              <?= $job->close_date   ?>
+            </td>
+            <td>
+              <a href="./view_detail.php?id=<?= $job->id ?>">
+                <i class="ri-eye-line view"></i>
+              </a>
+              <a href="./edit.php?id=<?= $job->id ?>">
+                <i class="ri-edit-line edit"></i>
+              </a>
+              <a href="../../../App/controllers/jobs/delete.php?id=<?= $job->id ?>">
+                <i class="ri-delete-bin-line delete"></i>
+              </a>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <?php foreach($jobs as $i=>$job): ?>
-            <tr>
-              <td>
-                <?= $i + 1 ?>
-              </td>
-              <td>
-                <?= $job->name ?>
-              </td>
-              <td>
-                <?= $job->company_name ?>
-              </td>
-              <td>
-                <?= $job->category_name ?>
-              </td>
-              <td>
-                <?= $job->gender ?>
-              </td>
-              <td>
-                <?= $job->salary ?>
-              </td>
-              <td>
-                <?= $job->job_type_name ?>
-              </td>
-              <td>
-                <?= $job->close_date   ?>
-              </td>
-              <td>
-                <a href="./view_detail.php?id=<?= $job->id ?>">
-                  <i class="ri-eye-line view"></i>
-                </a>
-                <a href="./edit.php?id=<?= $job->id ?>">
-                  <i class="ri-edit-line edit"></i>
-                </a>
-                <a href="../../../App/controllers/jobs/delete.php?id=<?= $job->id ?>">
-                  <i class="ri-delete-bin-line delete"></i>
-                </a>
-              </td>
-            </tr>
-          <?php endforeach ?>
-        </tbody>
-      </table>
-    </div>
+        <?php endforeach ?>
+      </tbody>
+    </table>
   </div>
 </section>
 

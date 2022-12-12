@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -32,56 +33,54 @@ $users = $table->getALL();
     <?php endif ?>
   </div>
   <div class="related_area">
-    <div class="table">
-      <table>
-        <thead>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Postal_code</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($users as $i => $user) : ?>
           <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Postal_code</th>
-            <th>Role</th>
-            <th>Action</th>
+            <td>
+              <?= $i + 1 ?>
+            </td>
+            <td>
+              <?= $user->name ?>
+            </td>
+            <td>
+              <?= $user->email ?>
+            </td>
+            <td>
+              <?= $user->phone_number ?>
+            </td>
+            <td>
+              <?= $user->postal_code ?>
+            </td>
+            <td>
+              <?= $user->role ?>
+            </td>
+            <td>
+              <a href="./view_detail.php?id=<?= $user->id ?>">
+                <i class="ri-eye-line view"></i>
+              </a>
+              <a href="./edit.php?id=<?= $user->id ?>">
+                <i class="ri-edit-line edit"></i>
+              </a>
+              <a href="../../../App/controllers/users/delete.php?id=<?= $user->id ?>">
+                <i class="ri-delete-bin-line delete"></i>
+              </a>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <?php foreach ($users as $i => $user) : ?>
-            <tr>
-              <td>
-                <?= $i + 1 ?>
-              </td>
-              <td>
-                <?= $user->name ?>
-              </td>
-              <td>
-                <?= $user->email ?>
-              </td>
-              <td>
-                <?= $user->phone_number ?>
-              </td>
-              <td>
-                <?= $user->postal_code ?>
-              </td>
-              <td>
-                <?= $user->role ?>
-              </td>
-              <td>
-                <a href="./view_detail.php?id=<?= $user->id ?>">
-                  <i class="ri-eye-line view"></i>
-                </a>
-                <a href="./edit.php?id=<?= $user->id ?>">
-                  <i class="ri-edit-line edit"></i>
-                </a>
-                <a href="../../../App/controllers/users/delete.php?id=<?= $user->id ?>">
-                  <i class="ri-delete-bin-line delete"></i>
-                </a>
-              </td>
-            </tr>
-          <?php endforeach ?>
-        </tbody>
-      </table>
-    </div>
+        <?php endforeach ?>
+      </tbody>
+    </table>
   </div>
 </section>
 

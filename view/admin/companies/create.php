@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php include("../layouts/header.php") ?>
 
 <section class="main-content">
@@ -16,29 +17,29 @@
     <?php endif ?>
   </div>
   <div class="related_area">
-    <form action="../../../App/controllers/companies/create.php " method="post">
+    <form action="../../../App/controllers/companies/create.php" id="form" method="post">
       <div class="form-control">
         <label for="name">Name <span class="required">*</span></label>
         <div class="input-holder">
-          <input type="text" id="name" name="name">
+          <input type="text" id="name" name="name" required>
         </div>
       </div>
       <div class="form-control">
         <label for="email">Type <span class="required">*</span> </label>
         <div class="input-holder">
-          <input type="text" id="type" name="type">
+          <input type="text" id="type" name="type" required>
         </div>
       </div>
       <div class="form-control">
         <label for="email">Email <span class="required">*</span></label>
         <div class="input-holder">
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email" required>
         </div>
       </div>
       <div class="form-control">
         <label for="location">Location <span class="required">*</span></label>
         <div class="input-holder">
-          <textarea name="location" id="location" rows="5" cols="100"></textarea>
+          <textarea name="location" id="location" rows="5" cols="100" required></textarea>
         </div>
       </div>
       <div class="form-control">
@@ -49,5 +50,5 @@
     </form>
   </div>
 </section>
-
+<?php include("../jquery-validate.php") ?>
 <?php include("../layouts/footer.php") ?>

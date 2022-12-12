@@ -1,9 +1,4 @@
-<?php
-  include("../../../vendor/autoload.php");
-  use Helpers\Auth;
-
-  Auth::check();
-?>
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php include("../layouts/header.php") ?>
 
 <section class="main-content">

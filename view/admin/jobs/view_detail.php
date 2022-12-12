@@ -1,3 +1,4 @@
+<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -58,7 +59,7 @@ $job = $table->findById($_GET["id"]);
       </h2>
       <span>
         <?php
-          Help::paraToList($job[0]->description);
+        Help::paraToList($job[0]->description);
         ?>
       </span>
       <h2>
@@ -66,11 +67,11 @@ $job = $table->findById($_GET["id"]);
       </h2>
       <span>
         <?php
-          Help::paraToList($job[0]->requirements);
+        Help::paraToList($job[0]->requirements);
         ?>
       </span>
     </div>
-    <a href="#" class="updated">
+    <a class="updated">
       Updated by <?= $job[0]->company_name ?>
     </a>
   </div>
