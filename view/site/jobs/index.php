@@ -90,7 +90,7 @@ $s_to_json = json_encode((array) $jobs);
                   </p>
                   <p class="post-info">
                     <span>Today</span>/
-                    <span><?= $job->job_type ?></span>/
+                    <span><?= $job->job_type_name ?></span>/
                     <span>3 applied</span>
                   </p>
                 </div>

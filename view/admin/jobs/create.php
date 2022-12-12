@@ -34,7 +34,7 @@ $types = $job_types_table->getAll();
     <?php endif ?>
   </div>
   <div class="related_area">
-    <form id="create-form" action="../../../App/controllers/jobs/create.php" method="post">
+    <form id="form" action="../../../App/controllers/jobs/create.php" method="post">
       <div class="form-control">
         <label for="name">Name <span class="required">*</span></label>
         <div class="input-holder">

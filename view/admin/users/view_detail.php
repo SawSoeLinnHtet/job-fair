@@ -46,6 +46,67 @@ $user = $table->findById($_GET["id"]);
         ">User</a>
         </div>
       </div>
+      <table>
+        <tr>
+          <td>
+            Email:
+          </td>
+          <td>
+            <?= $user[0]->name ?>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Email:
+          </td>
+          <td>
+            <?= $user[0]->email ?>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Phone Number:
+          </td>
+          <td>
+            <?= $user[0]->phone_number ?>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Address:
+          </td>
+          <td>
+            <?= $user[0]->address ?>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            City:
+          </td>
+          <td>
+            <?= $user[0]->city ?>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Contact:
+          </td>
+          <td>
+            <a href="#" class="contact">
+              <i class="ri-facebook-box-fill facebook"></i>
+            </a>
+            <a href="#" class="contact">
+              <i class="ri-instagram-line instagram"></i>
+            </a>
+            <a href="#" class="contact">
+              <i class="ri-twitter-line twitter"></i>
+            </a>
+            <a href="#" class="contact">
+              <i class="ri-whatsapp-line whatsapp"></i>
+            </a>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </section>

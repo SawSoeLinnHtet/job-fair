@@ -19,14 +19,15 @@ $company = $table->findById($_GET["id"]);
     </a>
   </div>
   <div class="related_area">
-    <form action="../../../App/controllers/categories/edit.php?id=<?= $_GET["id"] ?>" method="post">
+    <form id="form" action="../../../App/controllers/categories/edit.php?id=<?= $_GET["id"] ?>" method="post">
       <div class="form-control">
         <label for="name">Name <span class="required">*</span></label>
         <div class="input-holder">
-          <input type="text" id="name" name="name" value="<?= $company[0]->name ?>">
+          <input type="text" id="name" name="name" value="<?= $company[0]->name ?>" required>
         </div>
       </div>
       <div class="form-control">
+        <label for=""></label>
         <button type="submit">
           Edit
         </button>
@@ -35,4 +36,5 @@ $company = $table->findById($_GET["id"]);
   </div>
 </section>
 
+<?php include("../jquery-validate.php") ?>
 <?php include("../layouts/footer.php") ?>

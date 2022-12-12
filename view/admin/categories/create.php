@@ -21,14 +21,15 @@
     <?php endif ?>
   </div>
   <div class="related_area">
-    <form action="../../../App/controllers/categories/create.php " method="post">
+    <form id="form" action="../../../App/controllers/categories/create.php " method="post">
       <div class="form-control">
         <label for="name">Name <span class="required">*</span></label>
         <div class="input-holder">
-          <input type="text" id="name" name="name">
+          <input type="text" id="name" name="name" required>
         </div>
       </div>
       <div class="form-control">
+        <label></label>
         <button type="submit">
           Create
         </button>
@@ -37,4 +38,5 @@
   </div>
 </section>
 
+<?php include("../jquery-validate.php") ?>
 <?php include("../layouts/footer.php") ?>

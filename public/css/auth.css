@@ -14,16 +14,17 @@
 }
 .wrapper{
   width: 30%;
-  height: auto;
   background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid #fff;
-  padding: 30px;
+  padding-block: 15px;
+  padding-inline: 30px !important;
   text-align: center;
 }
 .wrapper p{
   font-weight: 500;
   letter-spacing: 4px;
+  text-align: left;
 }
 .wrapper span{
   font-weight: 500;
@@ -36,37 +37,31 @@
 }
 .form-wrap{
   width: 100%;
-  height: auto;
-  margin-top: 20px;
-  margin-bottom: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .form-wrap form{
+  width: 100%;
+}
+.form-wrap form .form-control{
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  justify-content: center;
+  margin-top: 10px;
 }
-form .form-group.side{
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-form .form-group input{
-  padding: 6px 20px;
-  border: none;
-  outline: none;
-  background-color: transparent;
-  border-bottom: 2px solid rgba(0, 0, 0, .3);
-}
-form .form-group.side input{
-  width: 41%;
-}
-form .form-group input::placeholder{
+.form-wrap form .form-control label{
+  text-align: left;
   font-size: 12px;
+  letter-spacing: 1px;
+  margin-bottom: 7px;
 }
-form .form-group button{
+.form-wrap form .form-control input{
+  padding: 4px 20px;
+  border: 1px solid #ff47a3;
+  background-color: transparent;
+  outline: none;
+  cursor:text;
+}
+form .form-control button{
   padding: 6px 132px;
   border: none;
   color: #fff;
@@ -74,11 +69,21 @@ form .form-group button{
   font-weight: bold;
   outline: none;
   border-radius: 4px;
-  margin-top: 10px;
+  margin-top: 8px;
+  letter-spacing: 2px;
 }
-form .form-group button:hover{
+form .form-control button:hover{
   background-color: rgba(255, 71, 163, .4);
   cursor: pointer;
+}
+.form-wrap form .half{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+.form-wrap form .half .form-control{
+  width:49%;
 }
 .alert-box{
   margin-top: 20px;
@@ -105,4 +110,12 @@ form .form-group button:hover{
 .alert-box .alert a{
   color: purple;
   margin-left: 10px;
+}
+.error{
+  color: #ff0000;
+  font-size: 10px !important;
+  text-align: left;
+}
+.required{
+  color: #ff0000;
 }

@@ -16,30 +16,46 @@
     <?php endif ?>
   </div>
   <div class="form-wrap">
-    <form action="../../App/controllers/register.php" method="POST">
-      <div class="form-group">
-        <input type="text" placeholder="Name" name="name">
+    <form id="form" action="../../App/controllers/register.php" method="POST">
+      <div class="half">
+        <div class="form-control">
+          <label>Name<span class="required">*</span></label>
+          <input type="text" name="name" required>
+        </div>
+        <div class="form-control">
+          <label>Email<span class="required">*</span></label>
+          <input type="email" name="email" required>
+        </div>
       </div>
-      <div class="form-group">
-        <input type="email" placeholder="Email" name="email">
+      <div class="half">
+        <div class="form-control">
+          <label>Password<span class="required">*</span></label>
+          <input type="password" name="password" required>
+        </div>
+        <div class="form-control">
+          <label>Comfirm Password<span class="required">*</span></label>
+          <input type="password" name="confirm_password" required>
+        </div>
       </div>
-      <div class="form-group">
-        <input type="password" placeholder="Password" name="password">
+      <div class="form-control">
+        <label>Phone Number<span class="required">*</span></label>
+        <input type="text" name="phone" required>
       </div>
-      <div class="form-group">
-        <input type="password" placeholder="Confirm Password" name="confirm_password">
+      <div class="form-control">
+        <label>Address<span class="required">*</span></label>
+        <input type="text" name="address" required>
       </div>
-      <div class="form-group">
-        <input type="text" placeholder="Phone Number" name="phone">
+      <div class="half">
+        <div class="form-control">
+          <label>City<span class="required">*</span></label>
+          <input type="text" name="city" required>
+        </div>
+        <div class="form-control">
+          <label>Postal Code<span class="required">*</span></label>
+          <input type="number" name="postal_code" required>
+        </div>
       </div>
-      <div class="form-group">
-        <input type="text" placeholder="Address" name="address">
-      </div>
-      <div class="form-group side">
-        <input type="text" placeholder="City" name="city">
-        <input type="number" placeholder="Postal Code" name="postal_code">
-      </div>
-      <div class="form-group">
+      <div class="form-control">
         <button type="submit">
           Register
         </button>
@@ -50,4 +66,6 @@
     Already Account?
     <a href="./login.php">Login Here</a </span>
 </div>
+
+<?php include("./jquery-validate.php") ?>
 <?php include("layouts/footer.php") ?>

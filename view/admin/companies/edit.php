@@ -53,6 +53,7 @@ $company = $table->findById($_GET["id"]);
         </div>
       </div>
       <div class="form-control">
+        <label></label>
         <button type="submit">
           Edit
         </button>

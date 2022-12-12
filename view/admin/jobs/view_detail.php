@@ -58,17 +58,13 @@ $job = $table->findById($_GET["id"]);
         Description
       </h2>
       <span>
-        <?php
-        Help::paraToList($job[0]->description);
-        ?>
+        <?= $job[0]->description ?>
       </span>
       <h2>
         Requirements
       </h2>
       <span>
-        <?php
-        Help::paraToList($job[0]->requirements);
-        ?>
+        <?= $job[0]->requirements ?>
       </span>
     </div>
     <a class="updated">

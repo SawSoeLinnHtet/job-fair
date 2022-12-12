@@ -479,7 +479,7 @@ a{
 .related_header p{
   font-size: 20px;
   font-weight: 700;
-  color: #e36ac8;
+  color: #5f5ce0;
 }
 .related_header a{
   font-size: 10px;
@@ -721,11 +721,12 @@ a{
 .detail-wrapper form button:hover{
   background-color: rgb(95, 92, 224);
 }
-.detail-wrap table{
-  text-align: left;
+.detail-wrapper .wrap table{
+  width: 100%;
+  margin-top: 20px;
 }
-.detail-2 table tr{
-  border: 5px solid #4CAF50 !important;
+.detail-wrapper .wrap table tr td{
+  padding: 10px;
 }
 .detail-wrapper .wrap ul{
   border-radius: 10px;

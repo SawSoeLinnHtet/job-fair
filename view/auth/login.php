@@ -11,14 +11,20 @@
     <?php endif ?>
   </div>
   <div class="form-wrap">
-    <form action="../../App/controllers/login.php" method="POST">
-      <div class="form-group">
-        <input type="text" placeholder="Enter Your Email" name="email">
+    <form id="form" action="../../App/controllers/login.php" method="POST">
+      <div class="form-control">
+        <label for="email">
+          Email
+        </label>
+        <input type="text" name="email" required>
       </div>
-      <div class="form-group">
-        <input type="password" placeholder="Enter Your Password" name="password">
+      <div class="form-control">
+        <label for="email">
+          Password
+        </label>
+        <input type="text" name="password" required>
       </div>
-      <div class="form-group">
+      <div class="form-control">
         <button type="submit">
           Login
         </button>
@@ -30,4 +36,6 @@
     <a href="./register.php">Create an Account</a>
   </span>
 </div>
+
+<?php include("./jquery-validate.php") ?>
 <?php include("layouts/footer.php") ?>
