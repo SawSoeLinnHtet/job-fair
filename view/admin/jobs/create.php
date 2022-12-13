@@ -100,29 +100,29 @@ $types = $job_types_table->getAll();
       <div class="form-control">
         <label for="description">Description<span class="required">*</span></label>
         <div class="input-holder">
-          <textarea name="description" id="description" required></textarea>
+          <textarea name="description" class="summernote" required></textarea>
         </div>
       </div>
       <div class="form-control">
         <label for="requirement">Requirement<span class="required">*</span></label>
         <div class="input-holder">
-          <textarea name="requirements" id="requirement" required></textarea>
+          <textarea name="requirements" class="summernote" required></textarea>
         </div>
       </div>
       <div class="form-control">
         <label for="date">Close Date<span class="required">*</span></label>
         <div class="input-holder">
-          <input type="date" name="close_date" id="date" required>
+          <input type="date" name="close_date" required>
         </div>
       </div>
       <div class="form-control">
         <label></label>
-        <button type="submit">
+        <button class="submit" type="submit">
           Create
         </button>
       </div>
     </form>
   </div>
 </section>
-<?php include("../jquery-validate.php") ?>
+<?php include("../jquery.php") ?>
 <?php include("../layouts/footer.php") ?>

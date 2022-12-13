@@ -46,32 +46,39 @@ $types = $job_types_table->getAll();
       </div>
       <div class="form-control">
         <label for="company">Company Name <span class="required">*</span> </label>
-        <select name="company_id" id="company" value="<?= $job[0]->company_id ?>">
-          <?php foreach ($companies as $company) : ?>
-            <option value="<?= $company->id ?>" <?= $company->id == $job[0]->company_id ? 'selected' : ''; ?>>
-              <?= $company->name ?>
-            </option>
-          <?php endforeach ?>
-        </select>
+        <div class="input-holder">
+          <select name="company_id" id="company" value="<?= $job[0]->company_id ?>">
+            <?php foreach ($companies as $company) : ?>
+              <option value="<?= $company->id ?>" <?= $company->id == $job[0]->company_id ? 'selected' : ''; ?>>
+                <?= $company->name ?>
+              </option>
+            <?php endforeach ?>
+          </select>
+        </div>
       </div>
       <div class="form-control">
         <label for="category">Category <span class="required">*</span></label>
-        <select name="category_id" id="company" value="<?= $job[0]->category_id ?>">
-          <?php foreach ($categories as $category) : ?>
-            <option value="<?= $category->id ?>" <?= $category->id == $job[0]->category_id ? 'selected' : ''; ?>>
-              <?= $category->name ?>
-            </option>
-          <?php endforeach ?>
-        </select>
+        <div class="input-holder">
+          <select name="category_id" id="company" value="<?= $job[0]->category_id ?>">
+            <?php foreach ($categories as $category) : ?>
+              <option value="<?= $category->id ?>" <?= $category->id == $job[0]->category_id ? 'selected' : ''; ?>>
+                <?= $category->name ?>
+              </option>
+            <?php endforeach ?>
+          </select>
+        </div>
       </div>
       <div class="form-control">
         <label for="gender">Gender <span class="required">*</span></label>
-        <select name="gender" id="gender" value="<?= $job[0]->gender ?>">
-          <option value="<?= $job[0]->gender ?>"><?= $job[0]->gender ?></option>
-          <option value="Male and Female">Male & Female</option>
-          <option value="Male Only">Male Only</option>
-          <option value="Female Only">Female Only</option>
-        </select>
+        <div class="input-holder">
+          <select name="job_type_id" id="type" value="<?= $job[0]->job_type_id ?>">
+            <?php foreach ($types as $type) : ?>
+              <option value="<?= $type->id ?>" <?= $type->id == $job[0]->job_type_id ? 'selected' : ''; ?>>
+                <?= $type->name ?>
+              </option>
+            <?php endforeach ?>
+          </select>
+        </div>
       </div>
       <div class="form-control">
         <label for="salary">Salary<span class="required">*</span></label>
@@ -81,13 +88,15 @@ $types = $job_types_table->getAll();
       </div>
       <div class="form-control">
         <label for="type">Job Type<span class="required">*</span></label>
-        <select name="job_type_id" id="type" value="<?= $job[0]->job_type_id ?>">
-          <?php foreach ($types as $type) : ?>
-            <option value="<?= $type->id ?>" <?= $type->id == $job[0]->job_type_id ? 'selected' : ''; ?>>
-              <?= $type->name ?>
-            </option>
-          <?php endforeach ?>
-        </select>
+        <div class="input-holder">
+          <select name="job_type_id" id="type" value="<?= $job[0]->job_type_id ?>">
+            <?php foreach ($types as $type) : ?>
+              <option value="<?= $type->id ?>" <?= $type->id == $job[0]->job_type_id ? 'selected' : ''; ?>>
+                <?= $type->name ?>
+              </option>
+            <?php endforeach ?>
+          </select>
+        </div>
       </div>
       <div class="form-control">
         <label for="address">Address<span class="required">*</span></label>
@@ -99,14 +108,14 @@ $types = $job_types_table->getAll();
       <div class="form-control">
         <label for="description">Description<span class="required">*</span></label>
         <div class="input-holder">
-          <textarea name="description" id="description"><?= $job[0]->description ?>
+          <textarea name="description" class="summernote" id="description"><?= $job[0]->description ?>
           </textarea>
         </div>
       </div>
       <div class="form-control">
         <label for="requirement">Requirement<span class="required">*</span></label>
         <div class="input-holder">
-          <textarea name="requirements" id="requirement"><?= $job[0]->requirements ?>
+          <textarea name="requirements" class="summernote" id="requirement"><?= $job[0]->requirements ?>
           </textarea>
         </div>
       </div>
@@ -118,7 +127,7 @@ $types = $job_types_table->getAll();
       </div>
       <div class="form-control">
         <label></label>
-        <button type="submit">
+        <button class="submit" type="submit">
           Create
         </button>
       </div>
@@ -126,4 +135,5 @@ $types = $job_types_table->getAll();
   </div>
 </section>
 
+<?php include("../jquery.php") ?>
 <?php include("../layouts/footer.php") ?>

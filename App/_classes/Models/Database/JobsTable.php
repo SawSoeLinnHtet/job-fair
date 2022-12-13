@@ -59,6 +59,7 @@ class JobsTable
       ON jobs.category_id = categories.id
       JOIN job_types
       ON jobs.job_type_id = job_types.id
+      ORDER BY jobs.created_at DESC
     ";
     $statement = $this->db->query($query);
 
@@ -111,7 +112,8 @@ class JobsTable
       address = :address,
       description = :description,
       requirements = :requirements,
-      close_date = :close_date
+      close_date = :close_date,
+      updated_at = now()
       WHERE id = :id
     ";
       $statement = $this->db->prepare($query);
@@ -135,10 +137,22 @@ class JobsTable
       return $e->getMessage();
     }
   }
-    public function findByCategory($category_id){
+  public function findByCategory($category_id){
     $query = "
-      SELECT * FROM jobs 
-      WHERE category_id = :category_id
+      SELECT jobs.*, 
+      companies.name AS company_name,
+      companies.image AS company_image,
+      companies.location AS company_address,
+      categories.name AS category_name, 
+      job_types.name AS job_type_name
+      FROM jobs 
+      JOIN companies 
+      ON jobs.company_id = companies.id
+      JOIN categories
+      ON jobs.category_id = categories.id
+      JOIN job_types
+      ON jobs.job_type_id = job_types.id
+      WHERE jobs.category_id = :category_id
     ";
     $statement = $this->db->prepare($query);
 

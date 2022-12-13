@@ -103,16 +103,12 @@ body{
   left: 0;
   object-fit: cover;
 }
-
-
-
 /* ---main--- */
 .main{
   width: 100%;
   height: calc(100vh - 60px);
   position: relative;
 }
-
 /* ---sidebar--- */
 .sidebar{
   top: 0;
@@ -128,21 +124,22 @@ body{
   border-right: 2px solid  #f1f1f1;
   transition: .6s;
 }
+.sidebar .sidebar-items li,
+.sidebar .bottom-sidebar-items li{
+  list-style: none;
+}
 .sidebar.active{
   width: 105px;
   overflow: hidden;
 }
-.sidebar.active .sidebar-item{
+.sidebar.active .sidebar-items{
   display: none;
 }
-li{
+.sidebar.active .sidebar-items{
   list-style: none;
 }
-a{
-  text-decoration: none;
-}
-.sidebar-items a,
-.bottom-sidebar-items a{
+.sidebar-items li a,
+.bottom-sidebar-items li a{
   display: flex;
   margin-bottom: 10px;
   text-decoration: none;
@@ -199,12 +196,14 @@ a{
 /* ---main-content--- */
 .main-content{
   width: calc(100% - 300px);
+  height: calc(100vh - 60px);
   top: 0;
   right: 0;
   position: absolute;
-  padding: 10px 20px;
+  padding: 20px 20px;
   transition: .6s;
-  background-color: #fbfbfb;
+  overflow-y: scroll;
+  background-color: rgba(95, 92, 224, .1);
 }
 .main-content.active{
   width: calc(100% - 105px);
@@ -473,11 +472,11 @@ a{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 30px;
+  padding: 10px 10px;
   margin-bottom: 20px;
 }
 .related_header p{
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 700;
   color: #5f5ce0;
 }
@@ -491,6 +490,7 @@ a{
   color: #fafafa;
   border-radius: 5px;
   background-color: #e36ac8;
+  text-decoration: none;
 }
 .related_header a i{
   font-size: 15px;
@@ -505,6 +505,7 @@ a{
   background-color: rgb(255, 255, 255);
   box-shadow: 1px 0 11px 3px #c7c7c7;
   margin-top: 20px;
+  border-radius: 6px;
 }
 .related_area table{
   width: 100%;
@@ -519,7 +520,7 @@ a{
 .related_area table tr th{
   background-color: #5f5ce0;
   font-weight: normal;
-  color: #000;
+  color: #fafafa;
   font-weight: bold;
   font-size: 13px;
   padding: 10px;
@@ -527,6 +528,9 @@ a{
 .related_area table tr td{
   font-size: 12px;
   padding: 10px;
+}
+.related_area table tr td a{
+  text-decoration: none;
 }
 .related_area form{
   width: 100%;
@@ -538,7 +542,6 @@ a{
   padding: 10px;
   display: flex;
   margin-top: 10px;
-  align-items: center;
   gap: 10px;
 }
 .related_area form .form-control label{
@@ -552,7 +555,7 @@ a{
   width: 70%;
 }
 .related_area form .form-control .input-holder input{
-  width: 700px;
+  width: 660px;
   height: 40px;
   padding-left: 20px;
   outline: none;
@@ -560,7 +563,7 @@ a{
   border: 1px solid #5f5ce0;
 }
 .related_area form .form-control .input-holder textarea{
-  width: 700px;
+  width: 660px;
   height: 100px;
   padding-left: 20px;
   padding-top: 10px;
@@ -568,16 +571,18 @@ a{
   border-radius: 5px;
   border: 1px solid #5f5ce0;
 }
+.note-editor.note-airframe .note-editing-area .note-editable, .note-editor.note-frame .note-editing-area .note-editable{
+  padding: 30px !important;
+}
 .related_area form .form-control .input-holder select{
-  width: 700px;
+  width: 660px;
   height: 40px;
   padding-left: 20px;
   outline: none;
   border-radius: 5px;
   border: 1px solid #5f5ce0;
-  background-color: rgba(95, 92, 224, .3);
 }
-.related_area form .form-control button{
+.related_area form .form-control .submit{
   width: 100px;
   height: 40px;
   float: right;
@@ -588,8 +593,8 @@ a{
   color: #fafafa;
   border-radius: 5px;
 }
-.related_area form .form-control button:hover{
-  background-color: rgba(95, 92, 224, .5);
+.related_area form .form-control .submit:hover{
+  background-color: rgba(95, 92, 224, .8);
 }
 .required{
   color: #ff0000;
@@ -832,7 +837,7 @@ a{
   margin-left: 20px;
 }
 .long-text span ul li{
-  list-style:square;
+  list-style: square;
   margin-bottom: 10px;
 }
 .detail-wrapper .updated{

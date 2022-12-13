@@ -68,7 +68,7 @@
       </div>
       <div class="form-control">
         <label></label>
-        <button type="submit">
+        <button class="submit" type="submit">
           Create
         </button>
       </div>
@@ -76,5 +76,5 @@
   </div>
 </section>
 
-<?php include("../jquery-validate.php") ?>
+<?php include("../jquery.php") ?>
 <?php include("../layouts/footer.php") ?>

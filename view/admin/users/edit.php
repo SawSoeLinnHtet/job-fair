@@ -69,7 +69,7 @@ $user = $table->findById($id);
       </div>
       <div class="form-control">
         <label></label>
-        <button type="submit">
+        <button class="submit" type="submit">
           Edit
         </button>
       </div>

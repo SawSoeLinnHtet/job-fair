@@ -58,4 +58,22 @@
       $row = $statement->fetchAll();
       return $row ?? '';
     }
+    public function upload($id, $image){
+      $statement = $this->db->prepare("
+         UPDATE categories SET image = :image WHERE id = :id
+      ");
+
+      $statement->execute([
+        ":id"=>$id,
+        ":image"=>$image
+      ]);
+
+      return $statement->rowCount();
+    }
+    public function getLimit(){
+      $statement = $this->db->query("
+        SELECT * FROM categories LIMIT 4
+      ");
+      return $statement->fetchAll();
+    }
   }

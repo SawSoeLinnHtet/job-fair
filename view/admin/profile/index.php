@@ -1,4 +1,3 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
 

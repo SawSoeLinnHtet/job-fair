@@ -16,7 +16,7 @@ $categories = $table->getAll();
 
 <section class="main-content">
   <div class="related_header">
-    <p>Companies</p>
+    <p>Categories</p>
     <a href="./create.php">
       <i class="ri-add-fill"></i>ADD NEW COMPANY
     </a>
@@ -61,6 +61,9 @@ $categories = $table->getAll();
               <?= $category->created_at ?>
             </td>
             <td>
+              <a href="./view_detail.php?id=<?= $category->id ?>">
+                <i class="ri-eye-line view"></i>
+              </a>
               <a href="./edit.php?id=<?= $category->id ?>">
                 <i class="ri-edit-line edit"></i>
               </a>

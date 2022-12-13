@@ -1,15 +1,23 @@
 <?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
-include("../../../vendor/autoload.php");
+  include("../../../vendor/autoload.php");
+  include("../../../App/_classes/Helpers/DateTime.php");
 
-use Models\Database\JobsTable;
-use Models\Database\MYSQL;
+  use Models\Database\JobsTable;
+  use Models\Database\CategoryTable;
+  use Models\Database\MYSQL;
 
-$table = new JobsTable(new MYSQL());
+  $table = new JobsTable(new MYSQL());
+  $category = new CategoryTable(new MYSQL());
 
-$jobs = $table->getAll();
+  $category_limits = $category->getLimit();
 
-$s_to_json = json_encode((array) $jobs);
+  if(isset($_GET["id"])){
+  $category_name = $category->findById($_GET["id"]);
+  $jobs = $table->findByCategory($_GET["id"]);
+  }else{
+  $jobs = $table->getAll();
+  }
 ?>
 <?php include("../layouts/header.php") ?>
 
@@ -18,28 +26,20 @@ $s_to_json = json_encode((array) $jobs);
     <div class="find-jobs-wrap" id="find-jobs-wrap">
       <div class="search-recent-bar">
         <div class="input-wrap">
-          <input type="text" class="job-search-input" placeholder="Search Jobs" />
+          <input type="text" class="job-search-input" placeholder="Search Jobs" value="<?= $category_name[0]->name ?? "" ?>"/>
           <button>
             <i class="ri-search-line"></i>
           </button>
         </div>
         <div class="recent-jobs">
-          <a href="#">
-            <span>UX Designer</span>
+          <?php foreach($category_limits as $category): ?>
+          <a href="./?id=<?= $category->id ?>">
+            <span>
+              <?= $category->name ?>
+            </span>
           </a>
-          <a href="#">
-            <span>UX Designer</span>
-          </a>
-          <a href="#">
-            <span>UX Designer</span>
-          </a>
-          <a href="#">
-            <span>UX Designer</span>
-          </a>
-          <a href="#">
-            <span>UX Designer</span>
-          </a>
-          <a href="#">
+          <?php endforeach ?>
+          <a href="../category/">
             <span>...</span>
           </a>
         </div>
@@ -89,7 +89,7 @@ $s_to_json = json_encode((array) $jobs);
                     <span><i class="ri-eye-line"></i>view</span>
                   </p>
                   <p class="post-info">
-                    <span>Today</span>/
+                    <span><?= time_elapsed_string($job->created_at) ?></span>/
                     <span><?= $job->job_type_name ?></span>/
                     <span>3 applied</span>
                   </p>

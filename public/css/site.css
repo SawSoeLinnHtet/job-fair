@@ -999,6 +999,7 @@ body{
   border-top: 1px solid rgba(80, 79, 79, .3);
 }
 .info-container .job-about p{
+  text-align: left;
   font-size: 14px;
   margin-top: 10px;
   margin-bottom: 10px;
