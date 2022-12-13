@@ -1,23 +1,25 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
-  include("../../../vendor/autoload.php");
-  include("../../../App/_classes/Helpers/DateTime.php");
+include("../../../vendor/autoload.php");
+include("../../../App/_classes/Helpers/DateTime.php");
 
-  use Models\Database\JobsTable;
-  use Models\Database\CategoryTable;
-  use Models\Database\MYSQL;
+use Models\Database\JobsTable;
+use Models\Database\CategoryTable;
+use Models\Database\MYSQL;
+use Helpers\Auth;
 
-  $table = new JobsTable(new MYSQL());
-  $category = new CategoryTable(new MYSQL());
+$session_user = Auth::check();
 
-  $category_limits = $category->getLimit();
+$table = new JobsTable(new MYSQL());
+$category = new CategoryTable(new MYSQL());
 
-  if(isset($_GET["id"])){
+$category_limits = $category->getLimit();
+
+if (isset($_GET["id"])) {
   $category_name = $category->findById($_GET["id"]);
   $jobs = $table->findByCategory($_GET["id"]);
-  }else{
+} else {
   $jobs = $table->getAll();
-  }
+}
 ?>
 <?php include("../layouts/header.php") ?>
 
@@ -26,18 +28,18 @@
     <div class="find-jobs-wrap" id="find-jobs-wrap">
       <div class="search-recent-bar">
         <div class="input-wrap">
-          <input type="text" class="job-search-input" placeholder="Search Jobs" value="<?= $category_name[0]->name ?? "" ?>"/>
+          <input type="text" class="job-search-input" placeholder="Search Jobs" value="<?= $category_name[0]->name ?? "" ?>" />
           <button>
             <i class="ri-search-line"></i>
           </button>
         </div>
         <div class="recent-jobs">
-          <?php foreach($category_limits as $category): ?>
-          <a href="./?id=<?= $category->id ?>">
-            <span>
-              <?= $category->name ?>
-            </span>
-          </a>
+          <?php foreach ($category_limits as $category) : ?>
+            <a href="./?id=<?= $category->id ?>">
+              <span>
+                <?= $category->name ?>
+              </span>
+            </a>
           <?php endforeach ?>
           <a href="../category/">
             <span>...</span>
@@ -114,7 +116,7 @@
       </div>
     </div>
     <div id="job-info">
-      <a href="#" class="bookmark">
+      <a id="bookmark" class="bookmark">
         <i class="ri-bookmark-3-fill"></i>
       </a>
       <button class="closeBtn" onclick="closeInfo()">
@@ -127,21 +129,20 @@
           <p id="job_location"></p>
         </div>
         <div class="job-text">
-
           <p>
-            Salary - <span id="salary" class="salary"> 500 USD</span>
+            Salary - <span id="salary" class="salary"></span>
           </p>
           <p>
-            Company Address - <span id="company_address"> Hong Koung, China</span>
+            Company Address - <span id="company_address"></span>
           </p>
           <p>
-            Open To - <span id="gender"> Male</span>
+            Open To - <span id="gender"></span>
           </p>
           <p>
-            Job Type - <span id="job_type"> Part Time</span>
+            Job Type - <span id="job_type"></span>
           </p>
           <p>
-            Close On - <span id="close_date"> 12-10-2002</span>
+            Close On - <span id="close_date"></span>
           </p>
           <!-- Minimum Requirement -->
           <p>Minimum Requirement</p>
@@ -197,8 +198,13 @@
             var job_detail = data.data[0];
             var image = job_detail.company_image == null ? "company.png" : job_detail.company_image
 
+            console.log(job_detail);
+
+
+            var href = "../../../App/controllers/bookmarks/create.php?user_id=<?= $session_user->id ?>&&job_id=" + job_detail.id
             var src = "../../../public/assets/images/companies/" + image
 
+            $("#bookmark").attr("href", href)
             $("#company_logo").attr("src", src)
             $("#job_name").text(job_detail.name)
             $("#salary").text(job_detail.salary)

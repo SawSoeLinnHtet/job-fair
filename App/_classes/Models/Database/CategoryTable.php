@@ -6,8 +6,7 @@
   {
     private $db = null;
 
-    public function __construct(MYSQL $db)
-    {
+    public function __construct(MYSQL $db){
       $this->db = $db->connect();
     }
     public function insert($name){
