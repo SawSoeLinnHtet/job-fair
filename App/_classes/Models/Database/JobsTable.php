@@ -153,6 +153,7 @@ class JobsTable
       JOIN job_types
       ON jobs.job_type_id = job_types.id
       WHERE jobs.category_id = :category_id
+      ORDER BY jobs.created_at DESC
     ";
     $statement = $this->db->prepare($query);
 

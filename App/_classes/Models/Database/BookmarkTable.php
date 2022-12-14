@@ -28,4 +28,16 @@
 
       return $this->db->lastInsertId();
     }
+    public function getByUserId($user_id){
+      $statement = $this->db->prepare("
+        SELECT * FROM bookmarks WHERE user_id = :user_id
+      ");
+
+      $statement->execute([
+        ":user_id" => $user_id
+      ]);
+
+      $row = $statement->fetchAll();
+      return $row ?? "";
+    }
   }

@@ -12,5 +12,23 @@ $table = new UsersTable(new MYSQL());
 $user = $table->findById($session_user->id);
 ?>
 <?php include("../layouts/header.php") ?>
-  <?php var_dump($user) ?>
+
+<main>
+  <div class="profile-container">
+    <div class="profile-detail-wrapper">
+      <div>
+        <img src="../../../public/assets/images/users/profile-picture.png" alt="">
+        <h3>
+          Hazel Doom
+        </h3>
+      </div>
+      <div>
+        <p>
+          Email : <span>hazeldoom520@gmail.com</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
 <?php include("../layouts/footer.php") ?>

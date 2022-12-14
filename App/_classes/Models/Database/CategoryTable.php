@@ -22,7 +22,7 @@
     }
     public function getAll(){
       $statement = $this->db->query(
-        "SELECT * FROM categories"
+        "SELECT * FROM categories ORDER BY categories.name"
       );
       return $statement->fetchAll();
     }
