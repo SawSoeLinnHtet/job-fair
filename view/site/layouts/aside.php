@@ -24,7 +24,7 @@
         </a>
       </li>
       <li class="sidebar-item">
-        <a href="">
+        <a href="../company/">
           <i class="ri-community-fill icon icon-5"></i>
           <span>Companies</span>
         </a>

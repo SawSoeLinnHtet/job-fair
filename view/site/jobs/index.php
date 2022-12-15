@@ -116,9 +116,6 @@ if (isset($_GET["id"])) {
       </div>
     </div>
     <div id="job-info">
-      <a id="bookmark" class="bookmark">
-        <i class="ri-bookmark-3-fill"></i>
-      </a>
       <button class="closeBtn" onclick="closeInfo()">
         <i class="ri-close-fill"></i>
       </button>

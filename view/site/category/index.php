@@ -40,5 +40,6 @@
       </div>
       <?php endforeach ?>
     </div>
+  </div>
 </main>
 <?php include("../layouts/footer.php") ?>
