@@ -1,36 +1,38 @@
 <?php
-include("../../../vendor/autoload.php");
-include("../../../App/_classes/Helpers/DateTime.php");
+  include("../../../vendor/autoload.php");
 
-use Models\Database\JobsTable;
-use Models\Database\CategoryTable;
-use Models\Database\CompanyTable;
-use Models\Database\MYSQL;
-use Helpers\Auth;
+  use Models\Database\JobsTable;
 
-$session_user = Auth::check();
+  use Models\Database\CategoryTable;
+  use Models\Database\CompanyTable;
+  use Models\Database\MYSQL;
+  use Helpers\Auth;
+  use Westsworld\TimeAgo;
 
-$table = new JobsTable(new MYSQL());
-$category = new CategoryTable(new MYSQL());
-$company = new CompanyTable(new MYSQL());
-$category_limits = $category->getLimit();
+  $session_user = Auth::check();
+  $timeAgo = new Westsworld\TimeAgo();
 
-if (isset($_GET["cataid"])) {
-  $category_name = $category->findById($_GET["cataid"]);
-  $jobs = $table->findByCategory($_GET["cataid"]);
-}else if(isset($_GET["compid"])){
-  $company_name = $company->findById($_GET["compid"]);
-  $jobs = $table->findByCompany($_GET["compid"]);
-} else {
-  $jobs = $table->getAll();
-}
+  $table = new JobsTable(new MYSQL());
+  $category = new CategoryTable(new MYSQL());
+  $company = new CompanyTable(new MYSQL());
+  $category_limits = $category->getLimit();
+
+  if (isset($_GET["cataid"])) {
+    $category_name = $category->findById($_GET["cataid"]);
+    $jobs = $table->findByCategory($_GET["cataid"]);
+  }else if(isset($_GET["compid"])){
+    $company_name = $company->findById($_GET["compid"]);
+    $jobs = $table->findByCompany($_GET["compid"]);
+  } else {
+    $jobs = $table->getAll();
+  }
 ?>
 <?php include("../layouts/header.php") ?>
 
 <main>
   <div class="jobs-wrap-container">
     <div class="find-jobs-wrap" id="find-jobs-wrap">
-      <div class="search-recent-bar">
+      <div class="search-recent-bar">`
         <div class="input-wrap">
           <input type="text" class="job-search-input" placeholder="Search Jobs" value="<?= $category_name[0]->name ?? $company_name[0]->name ?? "" ?>" />
           <button>
@@ -39,7 +41,7 @@ if (isset($_GET["cataid"])) {
         </div>
         <div class="recent-jobs">
           <?php foreach ($category_limits as $category) : ?>
-            <a href="./?id=<?= $category->id ?>">
+            <a href="./?cataid=<?= $category->id ?>">
               <span>
                 <?= $category->name ?>
               </span>
@@ -95,7 +97,7 @@ if (isset($_GET["cataid"])) {
                     <span><i class="ri-eye-line"></i>view</span>
                   </p>
                   <p class="post-info">
-                    <span><?= time_elapsed_string($job->created_at) ?></span>/
+                    <span><?= $timeAgo->inWordsFromStrings($job->created_at) ?></span>/
                     <span><?= $job->job_type_name ?></span>/
                     <span>3 applied</span>
                   </p>

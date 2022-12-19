@@ -6,7 +6,9 @@
       "email": "hazeldoom520@gmail.com"
     }
   ],
-  "require": {},
+  "require": {
+    "jimmiw/php-time-ago": "^3.2"
+  },
   "autoload": {
     "psr-4": {
       "Models\\": "App/_classes/Models/",

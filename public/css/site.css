@@ -337,7 +337,7 @@ body{
   font-size: 12px;
 }
 .detail-header .detail-middle-header{
-  flex-basis: 75%;
+  flex-basis: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -348,14 +348,6 @@ body{
 .detail-header .detail-middle-header p i{
   font-size: 13px;
   color: #f28602;
-}
-.detail-header .detail-right-header{
-  flex-basis: 15%;
-  border-left: 1px solid #eaeaea;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
 }
 /* ---detail-wrapper--- */
 .detail-wrapper{
@@ -870,7 +862,7 @@ body{
   background-color: #fff;
   display: none;
   overflow-y: scroll;
-  scrollbar-width: none;
+  scrollbar-width: thin;
   border-left: 1px solid rgb(194, 194, 194);
   position: relative;
 }
