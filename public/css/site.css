@@ -1200,4 +1200,37 @@ body{
 .bookmark-area{
   padding: 20px;
 }
+.companies-list{
+  width: 100%;
+  padding: 20px;
+}
+.companies-wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  background-color: #ffffff;
+  gap: 10px;
+  box-shadow: 1px 0 11px 3px #c7c7c7;
+  padding: 20px;
+}
+.companies-wrapper .company{
+  width: 100%;
+  max-width: calc(100% / 6);
+  padding-block: 10px;
+  border-radius: 5px;
+  border: 1px solid #4649FF;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  margin: 13px;
+}
+.companies-wrapper .company img{
+  width: 80px;
+  height: auto;
+}
+.companies-wrapper .company:hover{
+  box-shadow:  1px 0 11px 3px #9458d1;
+  border: none;
+}
 /* profile */
