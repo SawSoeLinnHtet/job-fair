@@ -163,4 +163,31 @@ class JobsTable
 
     return $statement->fetchAll();
   }
+  public function findByCompany($company_id)
+  {
+    $query = "
+      SELECT jobs.*, 
+      companies.name AS company_name,
+      companies.image AS company_image,
+      companies.location AS company_address,
+      categories.name AS category_name, 
+      job_types.name AS job_type_name
+      FROM jobs 
+      JOIN companies 
+      ON jobs.company_id = companies.id
+      JOIN categories
+      ON jobs.category_id = categories.id
+      JOIN job_types
+      ON jobs.job_type_id = job_types.id
+      WHERE jobs.company_id = :company_id
+      ORDER BY jobs.created_at DESC
+    ";
+    $statement = $this->db->prepare($query);
+
+    $statement->execute([
+      ":company_id" => $company_id
+    ]);
+
+    return $statement->fetchAll();
+  }
 }

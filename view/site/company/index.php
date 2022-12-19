@@ -8,7 +8,7 @@ use Models\Database\MYSQL;
 
 $table = new CompanyTable(new MYSQL());
 $job_table = new JobsTable(new MYSQL());
-$categories = $table->getAll();
+$companies = $table->getAll();
 ?>
 <?php include("../layouts/header.php") ?>
 <main>
@@ -27,9 +27,11 @@ $categories = $table->getAll();
   </div>
   <div class="companies-list">
     <div class="companies-wrapper">
-      <a href="">
-        <img src="../../../public/assets/images/companies/company.png" alt="">
+      <?php foreach($companies as $company ): ?>
+      <a href="../jobs/?compid=<?= $company->id ?>" class="company">
+        <img src="../../../public/assets/images/companies/<?= $company->image ?? "company.png" ?>" alt="">
       </a>
+      <?php endforeach ?>
     </div>
   </div>
 </main>
