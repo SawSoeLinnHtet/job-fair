@@ -90,9 +90,6 @@
             <i class="ri-star-fill"></i>
           </p>
         </div>
-        <div class="detail-right-header">
-          <p>LEADING EMPLOYERS</p>
-        </div>
       </div>
       <div class="detail-wrapper">
         <div class="detail-left-wrapper">
@@ -339,70 +336,6 @@
                 <span>
                   Myanmar’s leading and successful conglomerate.
                 </span>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="detail-right-wrapper">
-          <div class="detail-right-holder">
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/ananda.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/agd.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/agd.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/unique.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/unique.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/yoma.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/ananda.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/agd.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/ananda.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/agd.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/unique.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/yoma.png" alt="">
               </a>
             </div>
           </div>

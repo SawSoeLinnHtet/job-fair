@@ -45,6 +45,7 @@ $user = $table->findById($session_user->id);
           </a>
         </li>
       </ul>
+      <a href="../../../App/controllers/logout.php">Log Out</a>
     </div>
   </div>
 </main>
