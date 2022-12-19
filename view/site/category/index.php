@@ -28,7 +28,7 @@
     <div class="categories-wrapper">
       <?php foreach($categories as $category): ?>
       <div>
-        <a href="../jobs/?id=<?= $category->id ?>" class="category">
+        <a href="../jobs/?cataid=<?= $category->id ?>" class="category">
           <img src="../../../public/assets/images/categories/<?= $category->image ?? "technology.png" ?>" alt="category image">
           <div class="category_box-text">
             <p>

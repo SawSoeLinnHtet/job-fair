@@ -4,6 +4,7 @@ include("../../../App/_classes/Helpers/DateTime.php");
 
 use Models\Database\JobsTable;
 use Models\Database\CategoryTable;
+use Models\Database\CompanyTable;
 use Models\Database\MYSQL;
 use Helpers\Auth;
 
@@ -11,12 +12,15 @@ $session_user = Auth::check();
 
 $table = new JobsTable(new MYSQL());
 $category = new CategoryTable(new MYSQL());
-
+$company = new CompanyTable(new MYSQL());
 $category_limits = $category->getLimit();
 
-if (isset($_GET["id"])) {
-  $category_name = $category->findById($_GET["id"]);
-  $jobs = $table->findByCategory($_GET["id"]);
+if (isset($_GET["cataid"])) {
+  $category_name = $category->findById($_GET["cataid"]);
+  $jobs = $table->findByCategory($_GET["cataid"]);
+}else if(isset($_GET["compid"])){
+  $company_name = $company->findById($_GET["compid"]);
+  $jobs = $table->findByCompany($_GET["compid"]);
 } else {
   $jobs = $table->getAll();
 }
@@ -28,7 +32,7 @@ if (isset($_GET["id"])) {
     <div class="find-jobs-wrap" id="find-jobs-wrap">
       <div class="search-recent-bar">
         <div class="input-wrap">
-          <input type="text" class="job-search-input" placeholder="Search Jobs" value="<?= $category_name[0]->name ?? "" ?>" />
+          <input type="text" class="job-search-input" placeholder="Search Jobs" value="<?= $category_name[0]->name ?? $company_name[0]->name ?? "" ?>" />
           <button>
             <i class="ri-search-line"></i>
           </button>
