@@ -1,31 +1,30 @@
 <?php
-  include("../../../vendor/autoload.php");
+include("../../../vendor/autoload.php");
 
-  use Models\Database\JobsTable;
+use Models\Database\JobsTable;
 
-  use Models\Database\CategoryTable;
-  use Models\Database\CompanyTable;
-  use Models\Database\MYSQL;
-  use Helpers\Auth;
-  use Westsworld\TimeAgo;
+use Models\Database\CategoryTable;
+use Models\Database\CompanyTable;
+use Models\Database\MYSQL;
+use Helpers\Auth;
 
-  $session_user = Auth::check();
-  $timeAgo = new Westsworld\TimeAgo();
+$session_user = Auth::check();
+$timeAgo = new Westsworld\TimeAgo();
 
-  $table = new JobsTable(new MYSQL());
-  $category = new CategoryTable(new MYSQL());
-  $company = new CompanyTable(new MYSQL());
-  $category_limits = $category->getLimit();
+$table = new JobsTable(new MYSQL());
+$category = new CategoryTable(new MYSQL());
+$company = new CompanyTable(new MYSQL());
+$category_limits = $category->getLimit();
 
-  if (isset($_GET["cataid"])) {
-    $category_name = $category->findById($_GET["cataid"]);
-    $jobs = $table->findByCategory($_GET["cataid"]);
-  }else if(isset($_GET["compid"])){
-    $company_name = $company->findById($_GET["compid"]);
-    $jobs = $table->findByCompany($_GET["compid"]);
-  } else {
-    $jobs = $table->getAll();
-  }
+if (isset($_GET["cataid"])) {
+  $category_name = $category->findById($_GET["cataid"]);
+  $jobs = $table->findByCategory($_GET["cataid"]);
+} else if (isset($_GET["compid"])) {
+  $company_name = $company->findById($_GET["compid"]);
+  $jobs = $table->findByCompany($_GET["compid"]);
+} else {
+  $jobs = $table->getAll();
+}
 ?>
 <?php include("../layouts/header.php") ?>
 
@@ -172,7 +171,7 @@
           </a>
         </div>
         <div class="job-apply">
-          <button class="apply-btn">Apply</button>
+          <a href="../apply/form.php" class="apply-btn">Apply</a>
           <button class="message-btn">
             <i class="ri-message-3-fill"></i>
           </button>
@@ -206,7 +205,7 @@
 
             var href = "../../../App/controllers/bookmarks/create.php?user_id=<?= $session_user->id ?>&&job_id=" + job_detail.id
             var src = "../../../public/assets/images/companies/" + image
-
+            var apply_route = "../apply/form.php?job_id=" + job_detail.id
             $("#bookmark").attr("href", href)
             $("#company_logo").attr("src", src)
             $("#job_name").text(job_detail.name)
@@ -218,7 +217,7 @@
             $("#job_location").text(job_detail.address)
             $("#job_requirement").text(job_detail.requirements)
             $("#job_description").text(job_detail.description)
-
+            $(".apply-btn").attr("href", apply_route)
             showJobInfo();
           }
         },

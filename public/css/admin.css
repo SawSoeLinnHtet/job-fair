@@ -202,8 +202,7 @@ body{
   position: absolute;
   padding: 20px 20px;
   transition: .6s;
-  overflow-y: scroll;
-  background-color: rgba(95, 92, 224, .1);
+  background-color: #fff;
 }
 .main-content.active{
   width: calc(100% - 105px);

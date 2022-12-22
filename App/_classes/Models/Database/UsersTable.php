@@ -35,7 +35,6 @@
             now()
           )
         ";
-        var_dump($data);
         $statement = $this->db->prepare($query);
         
         $statement->execute($data);
