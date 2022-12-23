@@ -1,10 +1,11 @@
 <?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
 include("../../../vendor/autoload.php");
-include("../../../App/_classes/Helpers/DateTime.php");
 
 use Models\Database\JobsTable;
 use Models\Database\MYSQL;
+
+$timeAgo = new Westsworld\TimeAgo();
 
 $table = new JobsTable(new MYSQL());
 $job = $table->findById($_GET["id"]);
@@ -48,7 +49,7 @@ $job = $table->findById($_GET["id"]);
             <i class="ri-mail-close-line"></i><?= $job[0]->close_date ?>
           </li>
           <li>
-            <i class="ri-history-fill"></i><?= time_elapsed_string($job[0]->created_at) ?>
+            <i class="ri-history-fill"></i><?= $timeAgo->inWordsFromStrings($job[0]->created_at) ?>
           </li>
         </ul>
       </div>

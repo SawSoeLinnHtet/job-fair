@@ -41,11 +41,11 @@
        </a>
      </li>
      <li>
-       <a href="#">
+       <a href="../applicatiants/companies.php">
          <span class="icon icon-5">
            <i class="ri-list-check-2"></i>
          </span>
-         <span class="sidebar-item">APPLIED LIST</span>
+         <span class="sidebar-item">APPLICATIANTS</span>
        </a>
      </li>
    </ul>

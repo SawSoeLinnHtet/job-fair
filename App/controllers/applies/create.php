@@ -32,7 +32,6 @@
     "user_id" => $_GET["user_id"] ?? "undefined",
     "cv_name" => $cv_name ?? "undefined"
   ];
-
   if($table){
     $table->insert($data);
 

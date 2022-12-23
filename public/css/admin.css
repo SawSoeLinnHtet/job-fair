@@ -479,6 +479,10 @@ body{
   font-weight: 700;
   color: #5f5ce0;
 }
+.related_header .backandshow{
+  display: flex;
+  gap: 5px;
+}
 .related_header a{
   font-size: 10px;
   padding: 10px 10px;
@@ -490,13 +494,14 @@ body{
   border-radius: 5px;
   background-color: #e36ac8;
   text-decoration: none;
+  cursor: pointer;
 }
 .related_header a i{
   font-size: 15px;
 }
 .related_header a:hover{
   box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, .5);
-  background-color: rgba(227, 106, 200, .5);
+  background-color: rgba(227, 106, 200, .8);
 }
 .related_area{
   width: 100%;
@@ -850,3 +855,80 @@ body{
 }
 
 /* job profile */
+/* appliciant */
+.appliciant_companies{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+  margin: 0 auto;
+}
+.appliciant_company{
+  width: 150px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+.appliciant_company img{
+  width: 100px;
+  height: auto;
+}
+.appliciant_company span{
+  position: absolute;
+  opacity: 0;
+  text-align: center;
+}
+.appliciant_company:hover{
+  background-color: rgba(15, 58, 197, .6);
+}
+.appliciant_company:hover img{
+  opacity: 0;
+  transition: .5s;
+}
+.appliciant_company:hover span{
+  font-weight: bold;
+  color: #fff;
+  opacity: 100%;
+  transition: .5s;
+}
+.alert{
+  color: orangered;
+}
+.count{
+  color: #009000;
+  font-weight: 600;
+}
+.apply-job-name span{
+  font-size: 17px;
+  color: #009000;
+}
+.accept{
+  font-size: 18px;
+  margin-right: 10px;
+  color: #009000;
+}
+.denied{
+  font-size: 18px;
+  color: #ff0000;
+}
+
+/* appliciant */
+/* message */
+
+.message_box{
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* message */

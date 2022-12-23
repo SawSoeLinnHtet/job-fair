@@ -163,8 +163,7 @@ class JobsTable
 
     return $statement->fetchAll();
   }
-  public function findByCompany($company_id)
-  {
+  public function findByCompany($company_id){
     $query = "
       SELECT jobs.*, 
       companies.name AS company_name,
@@ -188,6 +187,53 @@ class JobsTable
       ":company_id" => $company_id
     ]);
 
+    return $statement->fetchAll();
+  }
+  public function findByCompanyAndCategory($company_id, $category_id)
+  {
+    $query = "
+      SELECT jobs.*, 
+      companies.name AS company_name,
+      companies.image AS company_image,
+      companies.location AS company_address,
+      categories.name AS category_name, 
+      job_types.name AS job_type_name
+      FROM jobs 
+      JOIN companies 
+      ON jobs.company_id = companies.id
+      JOIN categories
+      ON jobs.category_id = categories.id
+      JOIN job_types
+      ON jobs.job_type_id = job_types.id
+      WHERE jobs.company_id = :company_id 
+      AND jobs.category_id = :category_id
+      ORDER BY jobs.created_at DESC
+    ";
+    $statement = $this->db->prepare($query);
+
+    $statement->execute([
+      ":company_id" => $company_id,
+      ":category_id" => $category_id
+    ]);
+
+    return $statement->fetchAll();
+  }
+  
+  public function findCategoryByCompanyId($company_id){
+    $query = "
+      SELECT 
+        category_id
+      FROM
+        jobs
+      WHERE company_id = :company_id
+      GROUP BY category_id
+    ";
+    $statement = $this->db->prepare($query);
+
+    $statement->execute([
+      ":company_id" => $company_id
+    ]);
+    
     return $statement->fetchAll();
   }
 }

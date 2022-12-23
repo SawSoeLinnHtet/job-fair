@@ -2,9 +2,15 @@
 
 include("../../../vendor/autoload.php");
 
+use Models\Database\UsersTable;
+use Models\Database\MYSQL;
 use Helpers\Auth;
 
+$table = new UsersTable(new MYSQL());
+
 $session_user = Auth::check();
+$user = $table->findById($session_user->id);
+
 $job_id = $_GET["job_id"] ?? "undefined";
 ?>
 
@@ -31,15 +37,15 @@ $job_id = $_GET["job_id"] ?? "undefined";
       <form action="../../../App/controllers/applies/create.php?user_id=<?= $session_user->id ?>&&job_id=<?= $job_id ?>" method="POST" id="form" enctype="multipart/form-data">
         <div class="form-group">
           <label for="name">Name</label>
-          <input id="name" type="text" name="name" required>
+          <input id="name" type="text" name="name" required value="<?= $user[0]->name ?>">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" name="email" required>
+          <input type="email" name="email" required value="<?= $user[0]->email ?>">
         </div>
         <div class="form-group">
           <label for="number">Phone</label>
-          <input id="number" type="text" name="phonenumber" required>
+          <input id="number" type="text" name="phonenumber" required value="<?= $user[0]->phone_number  ?>">
         </div>
         <div class="form-group">
           <label for="cv-form">Upload your CV <span>( only PDF and DOC )</span></label>
