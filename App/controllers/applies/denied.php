@@ -7,8 +7,9 @@
   use Helpers\HTTP;
 
   $table = new ApplyListsTable(new MYSQL());
-  $id = $_GET["id"] ?? "undefined";
+  $id = $_GET["apply_id"] ?? "undefined";
+  $job_id = $_GET["job_id"] ?? "undefined";
 
   $table->denied($id);
 
-  HTTP::redirect("/admin/appliciants/","denined=1");
+  HTTP::redirect("/admin/applicatiants/index.php","job_id=$job_id&&denied=1");

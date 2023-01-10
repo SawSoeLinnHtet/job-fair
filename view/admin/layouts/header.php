@@ -19,7 +19,7 @@
     <div class="logo">
       <i class="icon ri-menu-line menu"></i>
       <h2>
-        POETIC<span>Season</span>
+        Job For<span> You</span>
       </h2>
     </div>
     <div class="search-notification-profile">

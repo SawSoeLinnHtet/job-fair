@@ -13,9 +13,9 @@
 <main>
   <div class="category-search-bar">
     <div class="display-page-title">
-      <h3>
+      <h1 class="title-bar">
         Categories
-      </h3>
+      </h1>
     </div>
     <form action="">
       <input type="text" name="categories-name" placeholder="Enter Categories Name">

@@ -17,7 +17,5 @@
 
     HTTP::redirect("/admin/applicatiants/", "job_id=$job_id&&accept=1");
   }else{
-    HTTP::redirect("/admin/applicatiants/", "job_id=$job_id&&unaccept=0");
+    HTTP::redirect("/admin/applicatiants/", "job_id=$job_id&&unaccept=1");
   }
-
-?>

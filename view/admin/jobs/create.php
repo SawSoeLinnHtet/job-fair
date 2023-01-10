@@ -23,11 +23,17 @@ $types = $job_types_table->getAll();
     <p>Jobs Created Form</p>
 
     <a href="./">
-      <i class="ri-arrow-go-back-fill"></i>Go Back
+      <i class="ri-arrow-go-back-fill"></i>
+      <span>Go Back</span>
     </a>
   </div>
   <div class="alert-box">
-    <?php if (isset($_GET['Failed']) == 1) : ?>
+    <?php if (isset($_GET['create_success']) == 1) : ?>
+      <div class="alert alert-success">
+        Created Job Failed!
+      </div>
+    <?php endif ?>
+    <?php if (isset($_GET['create_fail']) == 1) : ?>
       <div class="alert alert-danger">
         Created Job Failed!
       </div>

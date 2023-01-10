@@ -15,80 +15,54 @@ $company = $table->findById($_GET["id"]);
     <p>Company Details</p>
 
     <a href="./">
-      <i class="ri-arrow-go-back-fill"></i>Go Back
+      <i class="ri-arrow-go-back-fill"></i>
+      <span> Go Back</span>
     </a>
   </div>
-  <div class="detail-wrapper">
+  <div class="details-wrapper">
     <div class="wrap">
-      <span class="company-name">
-        <?= $company[0]->name ?>
-      </span>
-
-      <img src="../../../public/assets/images/companies/<?= $company[0]->image ?? "company.png" ?>" alt="image" class="detail-img">
-
-      <form action="../../../App/controllers/companies/upload.php?id=<?= $_GET["id"] ?>" method="post" enctype="multipart/form-data">
-        <input type="file" name="cover_image">
-        <button type="submit">
-          Upload
-        </button>
-      </form>
-    </div>
-    <div class="wrap">
-      <table>
-        <tr>
-          <td>
-            EMAIL :
-          </td>
-          <td>
-            <?= $company[0]->email ?>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            TYPE :
-          </td>
-          <td>
-            <?= $company[0]->type ?>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            ADDRESS :
-          </td>
-          <td>
-            <?= $company[0]->location ?>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            CONTACT :
-          </td>
-          <td>
-            <ul>
-              <li>
-                <a href="#" class="contact">
-                  <i class="ri-facebook-box-fill facebook"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="contact">
-                  <i class="ri-instagram-line instagram"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="contact">
-                  <i class="ri-twitter-line twitter"></i>
-                </a>
-              </li>
-              <li>
-                <a href="#" class="contact">
-                  <i class="ri-whatsapp-line whatsapp"></i>
-                </a>
-              </li>
-            </ul>
-          </td>
-        </tr>
-      </table>
+      <div class="profile-holder">
+        <img src="../../../public/assets/images/companies/<?= $company[0]->image ?? "company.png" ?>" alt="image" class="detail-img">
+      </div>
+      <div class="profile-details">
+        <p class="title">
+          <?= $company[0]->name ?>
+        </p>
+        <p class="type">
+          - <?= $company[0]->type ?>
+        </p>
+        <p class="mail">
+          <?= $company[0]->email ?>
+        </p>
+        <p class="address">
+          <?= $company[0]->location ?>
+        </p>
+        <div class="details-footer">
+          <ul class="contact-lists">
+            <li>
+              <a href="#" class="contact">
+                <i class="ri-facebook-box-fill facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="contact">
+                <i class="ri-instagram-line instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="contact">
+                <i class="ri-twitter-line twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="contact">
+                <i class="ri-whatsapp-line whatsapp"></i>
+              </a>
+            </li>
+          </ul>
+          <a href="./edit.php?id=<?= $company[0]->id ?>" class="edit-btn">Edit</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

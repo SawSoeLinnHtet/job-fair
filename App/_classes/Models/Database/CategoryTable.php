@@ -9,13 +9,14 @@
     public function __construct(MYSQL $db){
       $this->db = $db->connect();
     }
-    public function insert($name){
+    public function insert($name, $image){
       $statement = $this->db->prepare("
-        INSERT INTO categories (name) VALUES (:name)
+        INSERT INTO categories (name, image) VALUES (:name, :image)
       ");
 
       $statement->execute([
-        "name" => $name
+        "name" => $name,
+        "image" => $image
       ]);
 
       return $this->db->lastInsertId();
@@ -36,13 +37,17 @@
       ]);
       return $statement->rowCount();
     }
-    public function edit($id, $name){
+    public function edit($id, $name, $image){
       $statement = $this->db->prepare("
-        UPDATE categories SET name = :name WHERE id = :id
+        UPDATE categories
+        SET name = :name, 
+        image = :image 
+        WHERE id = :id
       ");
       $statement->execute([
         ":id" => $id,
-        ":name" => $name
+        ":name" => $name,
+        ":image" => $image
       ]);
       
       return $statement->rowCount();

@@ -14,16 +14,16 @@ $job = $table->findById($_GET["id"]);
 
 <section class="main-content">
   <div class="related_header">
-    <p>Company Details</p>
+    <p>Job Details</p>
 
     <a href="./">
-      <i class="ri-arrow-go-back-fill"></i>Go Back
+      <i class="ri-arrow-go-back-fill"></i>
+      <span>Go Back</span>
     </a>
   </div>
   <div class="detail-wrapper">
     <div class="job-profile">
-      <img src="../../../public/assets/images/companies/lotteria.png" alt="">
-
+      <img src="../../../public/assets/images/companies/<?= $job[0]->company_image ?? 'no-image.jpg' ?>" alt="">
       <div class="text">
         <p class="job-name">
           <?= $job[0]->name ?>
@@ -49,7 +49,8 @@ $job = $table->findById($_GET["id"]);
             <i class="ri-mail-close-line"></i><?= $job[0]->close_date ?>
           </li>
           <li>
-            <i class="ri-history-fill"></i><?= $timeAgo->inWordsFromStrings($job[0]->created_at) ?>
+            <i class="ri-history-fill"></i>
+            <?= $timeAgo->inWordsFromStrings($job[0]->created_at) ?>
           </li>
         </ul>
       </div>
@@ -67,10 +68,13 @@ $job = $table->findById($_GET["id"]);
       <span>
         <?= $job[0]->requirements ?>
       </span>
+      <div class="option">
+        <a class="updated">
+          Updated by <?= $job[0]->company_name ?>
+        </a>
+        <a href="./edit.php?id=<?= $job[0]->id ?>" class="edit-btn">Edit</a>
+      </div>
     </div>
-    <a class="updated">
-      Updated by <?= $job[0]->company_name ?>
-    </a>
   </div>
 </section>
 

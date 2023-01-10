@@ -12,5 +12,5 @@ $role = $_GET["role"] ?? "undefined";
 
 $table->roleChangeById($id, $role);
 
-HTTP::redirect("/admin/users/index.php", "Role_change_success=1");
+HTTP::redirect("/admin/users/index.php", "role_change_success=1");
 

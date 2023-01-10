@@ -5,23 +5,37 @@
   <div class="related_header">
     <p>Category Created Form</p>
     <a href="./">
-      <i class="ri-arrow-go-back-fill"></i>Go Back
+      <i class="ri-arrow-go-back-fill"></i>
+      <span>
+        Go Back
+      </span>
     </a>
   </div>
   <div class="alert-box">
-    <?php if (isset($_GET['success']) == 1) : ?>
-      <div class="alert alert-success">
-        Category Created!
+    <?php if (isset($_GET['create_fail']) == 1) : ?>
+      <div class="alert alert-danger">
+        Create user Failed!
       </div>
     <?php endif ?>
-    <?php if (isset($_GET['fail']) == 1) : ?>
+    <?php if (isset($_GET['type_error']) == 1) : ?>
+      <div class="alert alert-warning">
+        Check Your Image Type!
+      </div>
+    <?php endif ?>
+    <?php if (isset($_GET['image_error']) == 1) : ?>
       <div class="alert alert-danger">
-        Created Category Failed!
+        Your Image Has error!
       </div>
     <?php endif ?>
   </div>
   <div class="related_area">
-    <form id="form" action="../../../App/controllers/categories/create.php " method="post">
+    <form id="form" action="../../../App/controllers/categories/create.php " method="post" enctype="multipart/form-data">
+      <div class="form-control">
+        <label for="image">Upload profile<span class="required">*</span></label>
+        <div class="input-holder">
+          <input type="file" id="image" name="cover_image" class="file-upload">
+        </div>
+      </div>
       <div class="form-control">
         <label for="name">Name <span class="required">*</span></label>
         <div class="input-holder">

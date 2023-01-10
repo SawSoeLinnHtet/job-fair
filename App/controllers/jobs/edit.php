@@ -23,7 +23,7 @@
   if($table){
     $table->edit($id, $name, $company_id, $category_id, $gender, $salary, $job_type_id, $address, $description, $requirements, $close_date);
     
-    HTTP::redirect("/admin/jobs/", "Edit_success=1");
+    HTTP::redirect("/admin/jobs/", "edit_success=1");
   }else{
-    HTTP::redirect("/admin/jobs", "Edit_fail=1");
+    HTTP::redirect("/admin/jobs/edit.php", "edit_fail=1");
   }

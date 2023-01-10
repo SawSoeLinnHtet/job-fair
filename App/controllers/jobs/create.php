@@ -24,7 +24,7 @@
   if($table){
     $table->insert($data);
 
-    HTTP::redirect("/admin/jobs/", "Success=1");
+    HTTP::redirect("/admin/jobs/", "create_success=1");
   }else{
-    HTTP::redirect("/admin/jobs/", "Failed=2");
+    HTTP::redirect("/admin/jobs/create.php", "create_fail=1");
   }

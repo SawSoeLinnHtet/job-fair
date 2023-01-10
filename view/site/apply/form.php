@@ -29,6 +29,18 @@ $job_id = $_GET["job_id"] ?? "undefined";
   <div class="apply-form-container">
     <div class="form-wrap">
       <div class="apply-item">
+        <div class="alert-box">
+          <?php if (isset($_GET['Success']) == 1) : ?>
+            <div class="alert alert-success">
+              Your appliciant is success!
+            </div>
+          <?php endif ?>
+          <?php if (isset($_GET['Fail']) == 1) : ?>
+            <div class="alert alert-danger">
+              Your appliciant is failed! Please Try Again.
+            </div>
+          <?php endif ?>
+        </div>
         <h1>
           Enter Applier's Data & CV Form
         </h1>

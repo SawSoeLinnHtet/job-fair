@@ -8,8 +8,7 @@
   {
     private $db = null;
 
-    public function __construct(MYSQL $db)
-    {
+    public function __construct(MYSQL $db){
       $this->db = $db->connect();
     }
     public function insert($data){
@@ -23,6 +22,7 @@
             address,
             city,
             postal_code,
+            image,
             created_at
           ) VALUES (
             :name,
@@ -32,6 +32,7 @@
             :address,
             :city,
             :postal_code,
+            :image,
             now()
           )
         ";
@@ -113,7 +114,7 @@
       
       return $statement->rowCount();
     }
-    public function edit($id, $name, $email, $phone_number, $address, $city, $postal_code){
+    public function edit($id, $name, $email, $phone_number, $address, $city,  $postal_code, $pf_image){
       $query = "
         UPDATE users SET 
         name = :name, 
@@ -121,7 +122,8 @@
         phone_number = :phone_number,
         address = :address,
         city = :city,
-        postal_code = :postal_code
+        postal_code = :postal_code,
+        image = :image
         where id = :id   
       ";
 
@@ -133,6 +135,7 @@
         ":phone_number" => $phone_number,
         ":address" => $address,
         ":city" => $city,
+        ":image" => $pf_image,
         ":postal_code" => $postal_code,
         ":id" => $id
       ]);

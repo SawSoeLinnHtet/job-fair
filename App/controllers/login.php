@@ -17,7 +17,7 @@ if($user){
   $_SESSION["user"] = $user;
 
   if($user[0]->role_id == 1){
-    HTTP::redirect("/admin/admin_option/");
+    HTTP::redirect("/auth/option.php");
   }else{
     HTTP::redirect("/site/home/");
   }

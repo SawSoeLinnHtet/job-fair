@@ -17,6 +17,7 @@ class  CompanyTable
         type,
         email,
         location,
+        image,
         created_at,
         updated_at
       ) VALUES (
@@ -24,6 +25,7 @@ class  CompanyTable
         :type,
         :email,
         :location,
+        :image,
         now(),
         now()
       )
@@ -65,13 +67,14 @@ class  CompanyTable
     $row = $statement->fetchAll();
     return $row ?? false;
   }
-  public function edit($id, $name, $type, $email, $location){
+  public function edit($id, $name, $type, $email, $location, $image){
     $query = "
       UPDATE companies SET 
       name = :name, 
       type = :type, 
       email = :email, 
-      location = :location
+      location = :location,
+      image = :image
       WHERE id = :id
     ";
     $statement = $this->db->prepare($query);
@@ -82,6 +85,7 @@ class  CompanyTable
       ":type" => $type,
       ":email" => $email,
       ":location" => $location,
+      ":image" => $image
     ]);
     
     return $statement->rowCount();

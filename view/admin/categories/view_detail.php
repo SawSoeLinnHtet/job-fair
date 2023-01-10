@@ -12,26 +12,30 @@ $category = $table->findById($_GET["id"]);
 
 <section class="main-content">
   <div class="related_header">
-    <p>Company Details</p>
+    <p>Category Details</p>
 
-    <a href="./">
-      <i class="ri-arrow-go-back-fill"></i>Go Back
+    <a class="previous-btn">
+      <i class="ri-arrow-go-back-fill"></i>
+      <span>
+        Go Back
+      </span>
     </a>
   </div>
-  <div class="detail-wrapper">
+  <div class="details-wrapper">
     <div class="wrap">
-      <span class="company-name">
-        <?= $category[0]->name ?>
-      </span>
-
-      <img src="../../../public/assets/images/categories/<?= $category[0]->image ?? "technology.png" ?>" alt="image" class="detail-img">
-
-      <form action="../../../App/controllers/categories/upload.php?id=<?= $_GET["id"] ?>" method="post" enctype="multipart/form-data">
-        <input type="file" name="cover_image">
-        <button type="submit">
-          Upload
-        </button>
-      </form>
+      <div class="profile-holder">
+        <img src="../../../public/assets/images/categories/<?= $category[0]->image ?? 'no-image.jpg' ?>" alt="image" class="detail-img">
+      </div>
+      <div class="profile-details">
+        <p class="title">
+          <?= $category[0]->name ?>
+        </p>
+        <div class="details-footer">
+          <a href="./edit.php?id=<?= $category[0]->id ?>" class="edit-btn">Edit</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<?php include("../layouts/footer.php") ?>

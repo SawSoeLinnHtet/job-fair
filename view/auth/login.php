@@ -1,4 +1,7 @@
 <?php include("layouts/header.php") ?>
+<div class="poster">
+  <img src="../../public/assets/images/auth.jpg" alt="">
+</div>
 <div class="wrapper">
   <p>
     LOGIN FORM

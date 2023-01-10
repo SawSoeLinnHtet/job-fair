@@ -7,12 +7,12 @@ use Models\Database\JobsTable;
 use Models\Database\ApplyListsTable;
 use Models\Database\MYSQL;
 
-$job_id = $_GET["job_id"] ?? "undefined";
+$company_id = $_GET["company_id"] ?? "undefined";
 $cata_id = $_GET["cate_id"] ?? "undefined";
 
 $table = new JobsTable(new MYSQL());
 $apply_table = new ApplyListsTable(new MYSQL());
-$jobs = $table->findByCompanyAndCategory($job_id, $cata_id);
+$jobs = $table->findByCompanyAndCategory($company_id, $cata_id);
 ?>
 
 <?php include("../layouts/header.php") ?>
@@ -20,13 +20,12 @@ $jobs = $table->findByCompanyAndCategory($job_id, $cata_id);
 <section class="main-content">
   <div class="related_header">
     <p>Job Lists</p>
-    <form action="" method="POST">
-      <input type="text" class="search_appliciants">
-      <button><i class="ri-search-2-line"></i></button>
-    </form>
+    <a class="previous-btn">
+      Back
+    </a>
   </div>
   <div class="related_area">
-    <div class="appliciant_companies">
+    <div class="applicant_companies">
       <table>
         <thead>
           <tr>
@@ -74,4 +73,5 @@ $jobs = $table->findByCompanyAndCategory($job_id, $cata_id);
   </div>
 </section>
 
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <?php include("../layouts/footer.php") ?>

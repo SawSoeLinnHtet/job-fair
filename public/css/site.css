@@ -1046,6 +1046,9 @@ body{
   justify-content: space-between;
   gap: 20px;
 }
+.category-search-bar h1{
+  font-size: 30px;
+}
 .category-search-bar form{
   display: flex;
 }
@@ -1314,3 +1317,30 @@ body{
 }
 
 /* apply-form */
+.alert-box{
+  width: 100%;
+  margin-bottom: 10px;
+}
+.alert-box .alert{
+  width: 100%;
+  height: 30px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+.alert-box .alert.alert-danger{
+  color: #fff;
+  font-weight: 500;
+  background-color: rgba(255, 0, 0, .5);
+} 
+.alert-box .alert.alert-success{
+  color: #fff;
+  font-weight: 500;
+  background-color: rgba(0, 128, 0, .5);
+} 
+.alert-box .alert a{
+  color: purple;
+  margin-left: 10px;
+}

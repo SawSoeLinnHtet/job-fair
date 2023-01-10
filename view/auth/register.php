@@ -1,4 +1,7 @@
 <?php include("layouts/header.php") ?>
+<div class="poster">
+  <img src="../../public/assets/images/auth.jpg" alt="">
+</div>
 <div class="wrapper">
   <p>
     REGISTER FORM
@@ -43,7 +46,8 @@
       </div>
       <div class="form-control">
         <label>Address<span class="required">*</span></label>
-        <input type="text" name="address" required>
+        <!-- <input type="text" name="address" required> -->
+        <textarea name="address" id="" cols="30" rows="5"></textarea>
       </div>
       <div class="half">
         <div class="form-control">

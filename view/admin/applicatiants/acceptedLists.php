@@ -20,13 +20,9 @@ $appliciants = $table->findByAccept(1, $_GET["job_id"]);
   <div class="related_header">
     <p class="apply-job-name">
       <?= $job_table->findById($_GET["job_id"])[0]->name ?>
-      <span>( Job Name )</span>
     </p>
     <div class="backandshow">
-      <a>
-        Accpect Appliciants
-      </a>
-      <a>
+      <a class="previous-btn">
         Back
       </a>
     </div>
@@ -44,65 +40,63 @@ $appliciants = $table->findByAccept(1, $_GET["job_id"]);
         </div>
       <?php endif ?>
     </div>
-    <div class="appliciant_companies">
-      <table>
-        <thead>
-          <tr>
-            <th>
-              No
-            </th>
-            <th>
-              Appliciant Name
-            </th>
-            <th>
-              Appliciant Email
-            </th>
-            <th>
-              CV Form
-            </th>
-            <th>
-              <?php if (isset($_GET["accept"]) == 1) : ?>
+    <div class="applicant_companies">
+      <div class="table-holder">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                No
+              </th>
+              <th>
+                Appliciant Name
+              </th>
+              <th>
+                Appliciant Email
+              </th>
+              <th>
+                CV Form
+              </th>
+              <th>
                 Send Mail To User
-              <?php else : ?>
-                Accept/Denied
-              <?php endif ?>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php if (count($appliciants) >= 0) : ?>
-            <?php foreach ($appliciants as $i => $appliciant) : ?>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php if (count($appliciants) >= 0) : ?>
+              <?php foreach ($appliciants as $i => $appliciant) : ?>
+                <tr>
+                  <td>
+                    <?= $i + 1 ?>
+                  </td>
+                  <td>
+                    <?= $appliciant->name ?>
+                  </td>
+                  <td>
+                    <?= $appliciant->email ?>
+                  </td>
+                  <td>
+                    <a href="../../../public/assets/images/cv_form/<?= $appliciant->cv_name ?>">Tap to Download</a>
+                  </td>
+                  <td>
+                    <a href="../../../App/controllers/mails/create.php?job_id=<?= $appliciant->job_id ?>&&user_id=<?= $appliciant->user_id ?>" class="mail-button">
+                      <span>To Send Mail </span><i class="ri-chat-upload-line"></i>
+                    </a>
+                  </td>
+                </tr>
+              <?php endforeach ?>
+            <?php else : ?>
               <tr>
-                <td>
-                  <?= $i + 1 ?>
-                </td>
-                <td>
-                  <?= $appliciant->name ?>
-                </td>
-                <td>
-                  <?= $appliciant->email ?>
-                </td>
-                <td>
-                  <a href="../../../public/assets/images/cv_form/<?= $appliciant->cv_name ?>">Tap to Download</a>
-                </td>
-                <td>
-                  <a href="../../../App/controllers/mails/create.php?job_id=<?=$appliciant->job_id ?>&&user_id=<?= $appliciant->user_id ?>" class="accept">
-                    <i class="ri-chat-upload-line"></i>
-                  </a>
+                <td colspan="2">
+                  <span class="alert">
+                    No Data Found. Please Come Back Later!
+                  </span>
                 </td>
               </tr>
-            <?php endforeach ?>
-          <?php else : ?>
-            <tr>
-              <td colspan="2">
-                <span class="alert">
-                  No Data Found. Please Come Back Later!
-                </span>
-              </td>
-            </tr>
-          <?php endif ?>
-        </tbody>
-      </table>
+            <?php endif ?>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
@@ -116,4 +110,5 @@ $appliciants = $table->findByAccept(1, $_GET["job_id"]);
   }
 </script>
 
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <?php include("../layouts/footer.php") ?>

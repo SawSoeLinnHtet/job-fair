@@ -18,11 +18,10 @@
   }
 
   if ($cv_type === "application/pdf" || $cv_type === "application/msword") {
-    move_uploaded_file($cv_tmp, "../../../public/assets/images/cv_form/" . $cv_name);
+    move_uploaded_file($cv_tmp, "../../../public/assets/cv_form/" . $cv_name);
   } else {
     HTTP::redirect("/site/apply/form.php", "upload_fail=1");
   }
-
 
   $data = [
     "name" => $_POST["name"] ?? "undefined",
@@ -35,7 +34,7 @@
   if($table){
     $table->insert($data);
 
-    HTTP::redirect("/site/apply/form.php", "success=1");
+    HTTP::redirect("/site/apply/form.php", "Success=1");
   }else{
-    HTTP::redirect("/site/apply/form.php", "success=0");
+    HTTP::redirect("/site/apply/form.php", "Fail=1");
   }
