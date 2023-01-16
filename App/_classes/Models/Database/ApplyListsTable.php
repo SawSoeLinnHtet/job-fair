@@ -32,7 +32,7 @@
       $statement = $this->db->prepare($query);
       
       $statement->execute($data);
-
+      
       return $this->db->lastInsertId();
     }
     public function findByJobId($job_id){
@@ -94,31 +94,6 @@
 
       $statement->execute([
         ":id" => $apply_id
-      ]);
-      return $statement->rowCount();
-    }
-    public function deleteByUserId($user_id){
-      $query = "
-        DELETE FROM applier_lists 
-        WHERE user_id = :user_id
-      ";
-      $statement = $this->db->prepare($query);
-
-      $statement->execute([
-        ":user_id" => $user_id
-      ]);
-      return $statement->rowCount();
-    }
-    public function deleteByJobId($job_id)
-    {
-      $query = "
-          DELETE FROM applier_lists 
-          WHERE job_id = :job_id
-        ";
-      $statement = $this->db->prepare($query);
-
-      $statement->execute([
-        ":job_id" => $job_id
       ]);
       return $statement->rowCount();
     }

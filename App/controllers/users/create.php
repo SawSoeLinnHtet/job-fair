@@ -34,7 +34,7 @@
     "phone_number" => $_POST["phone"] ?? "undefined",
     "address" => $_POST["address"] ?? "undefined",
     "city" => $_POST["city"] ?? "undefined",
-    "image" => $image,
+    "image" => $image ?? null,
     "postal_code" => $_POST["postal_code"] ?? "undefined",
   ];
 

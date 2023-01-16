@@ -1,30 +1,30 @@
 <?php
-include("../../../vendor/autoload.php");
+  include("../../../vendor/autoload.php");
 
-use Models\Database\JobsTable;
+  use Models\Database\JobsTable;
 
-use Models\Database\CategoryTable;
-use Models\Database\CompanyTable;
-use Models\Database\MYSQL;
-use Helpers\Auth;
+  use Models\Database\CategoryTable;
+  use Models\Database\CompanyTable;
+  use Models\Database\MYSQL;
+  use Helpers\Auth;
 
-$session_user = Auth::check();
-$timeAgo = new Westsworld\TimeAgo();
+  $session_user = Auth::check();
+  $timeAgo = new Westsworld\TimeAgo();
 
-$table = new JobsTable(new MYSQL());
-$category = new CategoryTable(new MYSQL());
-$company = new CompanyTable(new MYSQL());
-$category_limits = $category->getLimit();
+  $table = new JobsTable(new MYSQL());
+  $category = new CategoryTable(new MYSQL());
+  $company = new CompanyTable(new MYSQL());
+  $category_limits = $category->getLimit();
 
-if (isset($_GET["cataid"])) {
-  $category_name = $category->findById($_GET["cataid"]);
-  $jobs = $table->findByCategory($_GET["cataid"]);
-} else if (isset($_GET["compid"])) {
-  $company_name = $company->findById($_GET["compid"]);
-  $jobs = $table->findByCompany($_GET["compid"]);
-} else {
-  $jobs = $table->getAll();
-}
+  if (isset($_GET["cataid"])) {
+    $category_name = $category->findById($_GET["cataid"]);
+    $jobs = $table->findByCategory($_GET["cataid"]);
+  } else if (isset($_GET["compid"])) {
+    $company_name = $company->findById($_GET["compid"]);
+    $jobs = $table->findByCompany($_GET["compid"]);
+  } else {
+    $jobs = $table->getAll();
+  }
 ?>
 <?php include("../layouts/header.php") ?>
 
@@ -77,6 +77,7 @@ if (isset($_GET["cataid"])) {
             </div>
           </div>
         </div>
+        <?php if(count($jobs) !== 0 ): ?>
         <div class="jobs-list">
           <?php foreach ($jobs as $job) : ?>
             <div class="job show_job_info" data-id="<?= $job->id ?>">
@@ -118,6 +119,13 @@ if (isset($_GET["cataid"])) {
             </div>
           <?php endforeach ?>
         </div>
+        <?php else : ?>
+          <div class="alert-box">
+              <div class="alert alert-warning">
+                There is nothing right now! Please Come Back Later!
+              </div>
+          </div>
+        <?php endif ?>
       </div>
     </div>
     <div id="job-info">
@@ -232,7 +240,7 @@ if (isset($_GET["cataid"])) {
   var jobs_wrap = document.getElementById("jobs-wrap")
 
   function showJobInfo() {
-    find_jobs_wrap.classList.add("find-jobs-wrap-65")
+    find_jobs_wrap.classList.toggle("find-jobs-wrap-65")
     job_info.classList.add("show")
   }
 

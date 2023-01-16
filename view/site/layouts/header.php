@@ -15,3 +15,4 @@
 <body>
   <?php include("aside.php") ?>
   <section id="home-wrap">
+    <?php include("navbar.php") ?>

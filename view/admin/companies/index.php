@@ -91,7 +91,7 @@ $companies = $table->getAll();
             <?php endforeach ?>
           <?php else : ?>
             <tr>
-              <td colspan="5">
+              <td colspan="6">
                 <span class="alert">
                   No Data Found. Please Come Back Later!
                 </span>

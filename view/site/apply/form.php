@@ -1,17 +1,16 @@
 <?php
 
-include("../../../vendor/autoload.php");
+  include("../../../vendor/autoload.php");
 
-use Models\Database\UsersTable;
-use Models\Database\MYSQL;
-use Helpers\Auth;
+  use Models\Database\UsersTable;
+  use Models\Database\MYSQL;
+  use Helpers\Auth;
 
-$table = new UsersTable(new MYSQL());
+  $table = new UsersTable(new MYSQL());
 
-$session_user = Auth::check();
-$user = $table->findById($session_user->id);
-
-$job_id = $_GET["job_id"] ?? "undefined";
+  $session_user = Auth::check();
+  
+  $job_id = $_GET["job_id"] ?? "undefined";
 ?>
 
 <!DOCTYPE html>
@@ -42,38 +41,46 @@ $job_id = $_GET["job_id"] ?? "undefined";
           <?php endif ?>
         </div>
         <h1>
-          Enter Applier's Data & CV Form
+          Enter Applier's Data & CV
         </h1>
         <img src="../../../public/assets/images/applynow.jpg" alt="">
       </div>
       <form action="../../../App/controllers/applies/create.php?user_id=<?= $session_user->id ?>&&job_id=<?= $job_id ?>" method="POST" id="form" enctype="multipart/form-data">
         <div class="form-group">
           <label for="name">Name</label>
-          <input id="name" type="text" name="name" required value="<?= $user[0]->name ?>">
+          <input id="name" type="text" name="name" required value="<?= $session_user->name ?>">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" name="email" required value="<?= $user[0]->email ?>">
+          <input type="email" name="email" required value="<?= $session_user->email ?>">
         </div>
         <div class="form-group">
           <label for="number">Phone</label>
-          <input id="number" type="text" name="phonenumber" required value="<?= $user[0]->phone_number  ?>">
+          <input id="number" type="text" name="phonenumber" required value="<?= $session_user->phone_number  ?>">
         </div>
         <div class="form-group">
-          <label for="cv-form">Upload your CV <span>( only PDF and DOC )</span></label>
+          <label for="cv-form">CV <span>( only PDF and DOC )</span></label>
           <input id="cv-form" class="file-input" type="file" name="cv_form" required>
         </div>
-        <button type="submit">Submit</button>
-        <a href="../jobs/">Back</a>
+        <div class="form-group buttons">
+          <button type="submit" class="submit">Submit</button>
+          <button class="back previous-btn">Back</button>
+        </div>
       </form>
     </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <script src="../../../public/js/site_external.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
   <script>
     $(document).ready(function() {
       $("#form").validate()
       console.log("hi");
+    })
+    $(".previous-btn").click(function() {
+      console.log("hello")
+      window.history.go(-1)
+      return false
     })
   </script>
 </body>

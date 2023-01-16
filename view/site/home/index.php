@@ -4,7 +4,7 @@
 <main class="main-content">
   <div class="home-top-banner">
     <div class="banner-img-holder">
-      <div class="banner-text">
+      <div class="banner-text" style="background-image: url('../../../public/assets/images/slideshow4.png');">
         <div class="theme-text theme-one">
           <h1>
             Find Your <br /> Dream Job <br /> Easily
@@ -33,9 +33,6 @@
           <button>Short Blogs</button>
         </div>
       </div>
-      <div class="banner-img">
-        <img src="../../../public/assets/images/slideshow4.png" alt="Banner Image">
-      </div>
     </div>
   </div>
   <div class="top-employers-wrap">
@@ -47,40 +44,32 @@
         <a href="/ananda">
           <img src="../../../public/assets/images/ananda.png" alt="">
         </a>
-        <p>Ananda Digital Myanmar</p>
       </div>
       <div class="employer">
         <a href="/yoma">
           <img src="../../../public/assets/images/yoma.png" alt="">
         </a>
-        <p>Yoma Bank</p>
       </div>
       <div class="employer">
         <a href="cocacola">
           <img src="../../../public/assets/images/cocacola.png" alt="">
         </a>
-        <p>Coca Cola</p>
       </div>
       <div class="employer">
         <a href="unilever">
           <img src="../../../public/assets/images/unique.png" alt="">
         </a>
-        <p>Unilever</p>
       </div>
       <div class="employer">
         <a href="agd">
           <img src="../../../public/assets/images/agd.png" alt="">
         </a>
-        <p>AGD Bank</p>
       </div>
     </div>
   </div>
   <div class="top-jobs-list-wrap">
     <div class="top-jobs-list-holder">
       <div class="detail-header">
-        <div class="detail-left-header">
-          <p>COMPANIES</p>
-        </div>
         <div class="detail-middle-header">
           <p>
             <i class="ri-star-fill"></i>
@@ -92,50 +81,6 @@
         </div>
       </div>
       <div class="detail-wrapper">
-        <div class="detail-left-wrapper">
-          <div class="detail-left-holder">
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/agd.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/ananda.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/yoma.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/unique.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/agd.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/ananda.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/yoma.png" alt="">
-              </a>
-            </div>
-            <div>
-              <a href="#">
-                <img src="../../../public/assets/images/unique.png" alt="">
-              </a>
-            </div>
-          </div>
-        </div>
         <div class="detail-middle-wrapper">
           <div class="detail-middle-holder">
             <div>
@@ -354,7 +299,6 @@
             <img src="../../../public/assets/images/industries-icon/bank.png" alt="">
           </div>
         </a>
-        <p>Banking</p>
       </div>
       <div class="industry">
         <a href="#">
@@ -362,7 +306,6 @@
             <img src="../../../public/assets/images/industries-icon/hr.png" alt="">
           </div>
         </a>
-        <p>Human Resource</p>
       </div>
       <div class="industry">
         <a href="#">
@@ -370,7 +313,6 @@
             <img src="../../../public/assets/images/industries-icon/pin.png" alt="">
           </div>
         </a>
-        <p>Hospitality</p>
       </div>
       <div class="industry">
         <a href="#">
@@ -378,7 +320,6 @@
             <img src="../../../public/assets/images/industries-icon/telecommunications.png" alt="">
           </div>
         </a>
-        <p>Telecommunication</p>
       </div>
       <div class="industry">
         <a href="#">
@@ -386,7 +327,6 @@
             <img src="../../../public/assets/images/industries-icon/ux.png" alt="">
           </div>
         </a>
-        <p>It/Computer</p>
       </div>
       <div class="industry">
         <a href="#">
@@ -394,7 +334,6 @@
             <img src="../../../public/assets/images/industries-icon/social-media.png" alt="">
           </div>
         </a>
-        <p>Marketing</p>
       </div>
       <div class="industry">
         <a href="#">
@@ -402,7 +341,6 @@
             <img src="../../../public/assets/images/industries-icon/education.png" alt="">
           </div>
         </a>
-        <p>Education</p>
       </div>
       <div class="industry">
         <a href="#">
@@ -410,7 +348,6 @@
             <img src="../../../public/assets/images/industries-icon/coding.png" alt="">
           </div>
         </a>
-        <p>Programming</p>
       </div>
     </div>
   </div>

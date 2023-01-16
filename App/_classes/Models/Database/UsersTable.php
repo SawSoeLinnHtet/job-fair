@@ -21,8 +21,8 @@
             phone_number,
             address,
             city,
-            postal_code,
             image,
+            postal_code,
             created_at
           ) VALUES (
             :name,
@@ -31,11 +31,12 @@
             :phone_number,
             :address,
             :city,
-            :postal_code,
             :image,
+            :postal_code,
             now()
           )
         ";
+        
         $statement = $this->db->prepare($query);
         
         $statement->execute($data);

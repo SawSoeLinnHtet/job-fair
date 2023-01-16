@@ -7,6 +7,7 @@
   use Helpers\HTTP;
 
   $table = new ApplyListsTable(new MYSQL());
+  $job_id = $_GET["job_id"];
 
   $cv_name = $_FILES['cv_form']['name'];
   $cv_error = $_FILES['cv_form']['error'];
@@ -34,7 +35,7 @@
   if($table){
     $table->insert($data);
 
-    HTTP::redirect("/site/apply/form.php", "Success=1");
+    HTTP::redirect("/site/apply/form.php", "job_id=$job_id&&Success=1");
   }else{
-    HTTP::redirect("/site/apply/form.php", "Fail=1");
+    HTTP::redirect("/site/apply/form.php", "job_id=$job_id&&Fail=1");
   }

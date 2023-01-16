@@ -11,7 +11,8 @@ $job_table = new JobsTable(new MYSQL());
 $companies = $table->getAll();
 ?>
 <?php include("../layouts/header.php") ?>
-<main>
+
+<main class="main-content">
   <div class="category-search-bar">
     <div class="display-page-title">
       <h3>
@@ -26,13 +27,21 @@ $companies = $table->getAll();
     </form>
   </div>
   <div class="companies-list">
-    <div class="companies-wrapper">
-      <?php foreach($companies as $company ): ?>
-      <a href="../jobs/?compid=<?= $company->id ?>" class="company">
-        <img src="../../../public/assets/images/companies/<?= $company->image ?? "company.png" ?>" alt="">
-      </a>
-      <?php endforeach ?>
-    </div>
+    <?php if(count($companies)!== 0 ): ?>
+      <div class="companies-wrapper">
+        <?php foreach($companies as $company ): ?>
+        <a href="../jobs/?compid=<?= $company->id ?>" class="company">
+          <img src="../../../public/assets/images/companies/<?= $company->image ?? "company.png" ?>" alt="">
+        </a>
+        <?php endforeach ?>
+      </div>
+    <?php else : ?>
+      <div class="alert-box">
+          <div class="alert alert-warning">
+            There is nothing right now! Please Come Back Later!
+          </div>
+      </div>
+    <?php endif ?>
   </div>
 </main>
 <?php include("../layouts/footer.php") ?>

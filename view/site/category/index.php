@@ -1,16 +1,17 @@
 <?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 
 <?php
-  use Models\Database\JobsTable;
-  use Models\Database\CategoryTable;
-  use Models\Database\MYSQL;
 
-  $table = new CategoryTable(new MYSQL());
-  $job_table = new JobsTable(new MYSQL());
-  $categories = $table->getAll();
+use Models\Database\JobsTable;
+use Models\Database\CategoryTable;
+use Models\Database\MYSQL;
+
+$table = new CategoryTable(new MYSQL());
+$job_table = new JobsTable(new MYSQL());
+$categories = $table->getAll();
 ?>
 <?php include("../layouts/header.php") ?>
-<main>
+<main class="main-content">
   <div class="category-search-bar">
     <div class="display-page-title">
       <h1 class="title-bar">
@@ -25,21 +26,28 @@
     </form>
   </div>
   <div class="categories-list">
-    <div class="categories-wrapper">
-      <?php foreach($categories as $category): ?>
-      <div>
-        <a href="../jobs/?cataid=<?= $category->id ?>" class="category">
-          <img src="../../../public/assets/images/categories/<?= $category->image ?? "technology.png" ?>" alt="category image">
-          <div class="category_box-text">
+    <?php if (count($categories) !== 0) : ?>
+      <div class="categories-wrapper">
+        <?php foreach ($categories as $category) : ?>
+          <a href="../jobs/?cataid=<?= $category->id ?>" class="category">
+            <img src="../../../public/assets/images/categories/<?= $category->image ?? "technology.png" ?>" alt="category image">
             <p>
-              <?= $category->name ?> 
+              <?= $category->name ?>
               <span>(<?= count($job_table->findByCategory($category->id)) ?>)<span>
             </p>
-          </div>
+          </a>
+        <?php endforeach ?>
+        <a href="#" class="text-alert-warning">
+          Alert
         </a>
       </div>
-      <?php endforeach ?>
-    </div>
+    <?php else : ?>
+      <div class="alert-box">
+          <div class="alert alert-warning">
+            There is nothing right now! Please Come Back Later!
+          </div>
+      </div>
+    <?php endif ?>
   </div>
 </main>
 <?php include("../layouts/footer.php") ?>

@@ -22,7 +22,7 @@
     "phone_number" => $_POST["phone"] ?? "undefined",
     "address" => $_POST["address"] ?? "undefined",
     "city" => $_POST["city"] ?? "undefined",
-    "postal_code" => $_POST["postal_code"] ?? "undefined"
+    "postal_code" => $_POST["postal_code"] ?? "undefined",
   ];
 
   if($table){

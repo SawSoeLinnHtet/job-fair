@@ -27,4 +27,13 @@
 
       return $this->db->lastInsertId();
     }
+    public function deleteByUser($user_id){
+      $statement = $this->db->prepare("
+        DELETE FROM mails WHERE user_id = :user_id
+      ");
+      $statement->execute(
+        [":user_id"=>$user_id]
+      );
+      return $statement->rowCount();
+    }
   }

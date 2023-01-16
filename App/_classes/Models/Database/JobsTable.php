@@ -234,26 +234,4 @@ class JobsTable
     
     return $statement->fetchAll();
   }
-  public function deleteJobsByCompanyId($company_id){
-    $statement = $this->db->prepare("
-      DELETE FROM jobs WHERE company_id = :company_id"
-    );
-
-    $statement->execute([
-      ":company_id" => $company_id
-    ]);
-    return $statement->rowCount();  
-  }
-  public function deleteJobsByCategoryId($category_id)
-  {
-    $statement = $this->db->prepare(
-      "
-      DELETE FROM jobs WHERE category_id = :category_id"
-    );
-
-    $statement->execute([
-      ":category_id" => $category_id
-    ]);
-    return $statement->rowCount();
-  }
 }
