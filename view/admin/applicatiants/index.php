@@ -1,17 +1,18 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+
 <?php
+  $title = "Index";
+  include("../../../vendor/autoload.php");
 
-include("../../../vendor/autoload.php");
+  use Models\Database\ApplyListsTable;
+  use Models\Database\JobsTable;
+  use Models\Database\MYSQL;
 
-use Models\Database\ApplyListsTable;
-use Models\Database\JobsTable;
-use Models\Database\MYSQL;
+  $table = new ApplyListsTable(new MYSQL());
+  $job_table = new JobsTable(new MYSQL());
 
-$table = new ApplyListsTable(new MYSQL());
-$job_table = new JobsTable(new MYSQL());
+  $appliciants = $table->findByAccept(0, $_GET["job_id"]);
 
-$appliciants = $table->findByAccept(0, $_GET["job_id"]);
-
+  $job = $job_table->findById($_GET["job_id"]);
 ?>
 
 <?php include("../layouts/header.php") ?>
@@ -19,7 +20,7 @@ $appliciants = $table->findByAccept(0, $_GET["job_id"]);
 <section class="main-content">
   <div class="related_header">
     <p class="apply-job-name">
-      <?= $job_table->findById($_GET["job_id"])[0]->name ?>
+      <?= $job[0]->name ?>
     </p>
     <div class="backandshow">
       <a href="./acceptedLists.php?job_id=<?= $_GET["job_id"] ?>">
@@ -48,7 +49,7 @@ $appliciants = $table->findByAccept(0, $_GET["job_id"]);
         </div>
       <?php endif ?>
     </div>
-    <div class="applicant_companies">
+    <div class="applicant_relate">
       <div class="table-holder">
         <table>
           <thead>
@@ -126,4 +127,5 @@ $appliciants = $table->findByAccept(0, $_GET["job_id"]);
     }, 10000);
   }
 </script>
+
 <?php include("../layouts/footer.php") ?>

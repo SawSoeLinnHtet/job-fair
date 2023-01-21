@@ -30,7 +30,7 @@ body{
   color: #5073fb;
   font-size: 1.5rem;
 }
-.search-notification-profile{
+.search-notification-profile{ 
   width: calc(100% - 300px);
   display: flex;
   align-items: center;
@@ -91,18 +91,19 @@ body{
 }
 .profile{
   position: relative;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
 }
 .profile img{
   width: 100%;
   height: 100%;
-  position: absolute;
   top: 0;
   left: 0;
   object-fit: cover;
+  border: 1px solid #000;
+  border-radius: 50%;
 }
 /* ---main--- */
 .main{
@@ -824,11 +825,16 @@ body{
 /* job profile */
 /* applicant */
 .applicant_companies{
+  color: #009000;
   height: fit-content;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.applicant_relate{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 10px;
+  justify-content: center;
 }
 .applicant_company{
   width: 120px;
@@ -923,6 +929,9 @@ body{
 }
 .profile-wrapper .details-text .profile-field .field-name{
   flex-basis: 30%;
+}
+.profile-wrapper .details-text .profile-field .field-value{
+  flex-basis: 60%;
 }
 .profile-wrapper .details-text .profile-field a{
   margin: 0;

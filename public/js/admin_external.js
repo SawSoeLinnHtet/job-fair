@@ -21,5 +21,7 @@ $(document).ready(function() {
     window.history.go(-1);
     return false;
   })
+
+  $("#form").validate()
 })
 

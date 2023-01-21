@@ -1,3 +1,8 @@
+<?php
+include("../../../vendor/autoload.php");
+
+use Helpers\URI;
+?>
 <section id="navbar">
   <div class="navbar">
     <p class="nav-btn">
@@ -8,31 +13,31 @@
   </div>
   <div class="nav-menu">
     <ul>
-      <li>
+      <li class="<?= URI::check("/home/"); ?>">
         <a href="../home/">
           <i class="ri-home-4-fill"></i>
           <span>Home</span>
         </a>
       </li>
-      <li>
+      <li class="<?= URI::check("/jobs/"); ?>">
         <a href="../jobs/">
           <i class="ri-search-eye-fill"></i>
           <span>Find Jobs</span>
         </a>
       </li>
-      <li>
+      <li class="<?= URI::check("/category/"); ?>">
         <a href="../category/">
           <i class="ri-shape-fill"></i>
           <span>Categories</span>
         </a>
       </li>
-      <li>
+      <li class="<?= URI::check("/company/"); ?>">
         <a href="../company/">
           <i class="ri-community-fill"></i>
           <span>Companies</span>
         </a>
       </li>
-      <li>
+      <li class="<?= URI::check("/news/"); ?>">
         <a href="">
           <i class="ri-newspaper-line"></i>
           <span>News</span>

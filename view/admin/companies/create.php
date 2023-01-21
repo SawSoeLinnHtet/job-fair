@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+$title = "Companies-Create";
+?>
 <?php include("../layouts/header.php") ?>
 
 <section class="main-content">
@@ -29,7 +31,7 @@
       </div>
     <?php endif ?>
     <div class="related_area">
-      <form action="../../../App/controllers/companies/create.php" id="form" method="post" enctype="multipart/form-data">
+      <form id="form" action="../../../App/controllers/companies/create.php" method="post" enctype="multipart/form-data">
         <div class="form-control">
           <label for="image">Upload profile<span class="required">*</span></label>
           <div class="input-holder">
@@ -69,5 +71,12 @@
       </form>
     </div>
 </section>
-<?php include("../jquery.php") ?>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $(".form").validate()
+  });
+</script>
 <?php include("../layouts/footer.php") ?>

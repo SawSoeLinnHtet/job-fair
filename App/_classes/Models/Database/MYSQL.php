@@ -15,7 +15,7 @@
 
     public function __construct(
       $dbhost = "localhost",
-      $dbname = "job_for_you",
+      $dbname = "job-for-you",
       $dbuser = "root",
       $dbpass = ""
     ){
@@ -35,10 +35,10 @@
             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
           ]
-          );
+        );
         return $this->db;
       }catch(PDOException $e){
-        return $e->getMessage();
+        throw $e;
       }
     }
   }

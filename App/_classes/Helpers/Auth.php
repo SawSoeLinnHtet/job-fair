@@ -7,9 +7,8 @@ class Auth
 {
   static function check(){
     session_start();
-    
     if($_SESSION["user"]){
-      return $_SESSION["user"][0];
+      return $_SESSION["user"];
     }else{
       HTTP::redirect("/auth/login.php");
     }

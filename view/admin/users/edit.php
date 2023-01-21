@@ -1,11 +1,12 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php 
+  $title = "Users-Edit";
+?>
 <?php
 
 include("../../../vendor/autoload.php");
 
 use Models\Database\UsersTable;
 use Models\Database\MYSQL;
-use Helpers\HTTP;
 
 $table = new UsersTable(new MYSQL());
 $id = $_GET["id"];

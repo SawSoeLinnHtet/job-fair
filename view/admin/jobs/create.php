@@ -1,5 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
 <?php
+$title = "Jobs-Create";
+
 include("../../../vendor/autoload.php");
 
 use Models\Database\CompanyTable;
@@ -130,5 +131,23 @@ $types = $job_types_table->getAll();
     </form>
   </div>
 </section>
-<?php include("../jquery.php") ?>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+  $("#form").validate()
+  $(".summernote").summernote({
+    tabsize: 2,
+    height: 200,
+    toolbar: [
+      ["style", ["style"]],
+      ["font", ["bold", "underline", "clear"]],
+      ["color", ["color"]],
+      ["para", ["ul", "ol", "paragraph"]],
+      ["table", ["table"]],
+      ["view", ["fullscreen", "codeview", "help"]],
+    ],
+  })
+</script>
 <?php include("../layouts/footer.php") ?>

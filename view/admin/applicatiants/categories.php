@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php 
+  $title = "Categories"; 
+?>
 <?php
   include("../../../vendor/autoload.php");
 
@@ -27,7 +29,7 @@
     </a>
   </div>
   <div class="related_area">
-    <div class="applicant_companies">
+    <div class="applicant_relate">
       <div class="table-holder">
         <table>
           <thead>

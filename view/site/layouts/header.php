@@ -1,3 +1,10 @@
+<?php
+  include("../../../vendor/autoload.php");
+
+  use Helpers\Auth;
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>

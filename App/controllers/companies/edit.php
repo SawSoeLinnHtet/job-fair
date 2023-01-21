@@ -37,6 +37,15 @@
     }
   }
 
-  $table->edit($id, $name, $type, $email, $location, $image);
+  $data = [
+    "id" => $_GET["id"] ?? "undefined",
+    "name" => $_POST['name'] ?? "undefined",
+    "type" => $_POST['type'] ?? "undefined",
+    "email" => $_POST['email'] ?? "undefined",
+    "location" => $_POST['location'] ?? "undefined",
+    "image" => $image
+  ];
+
+  $table->edit($data);
 
   HTTP::redirect("/admin/companies/", "edit_success=1");

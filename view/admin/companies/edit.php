@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+  $title = "Companies-Edit"; 
+?>
 <?php
 include("../../../vendor/autoload.php");
 

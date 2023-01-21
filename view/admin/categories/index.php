@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+  $title = "Categories-Index";
+?>
 <?php
 
 include("../../../vendor/autoload.php");
@@ -98,5 +100,4 @@ $categories = $table->getAll();
   </div>
 </section>
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <?php include("../layouts/footer.php") ?>

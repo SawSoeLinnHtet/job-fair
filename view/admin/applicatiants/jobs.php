@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+$title = "Jobs";
+?>
 <?php
 
 include("../../../vendor/autoload.php");
@@ -25,7 +27,7 @@ $jobs = $table->findByCompanyAndCategory($company_id, $cata_id);
     </a>
   </div>
   <div class="related_area">
-    <div class="applicant_companies">
+    <div class="applicant_relate">
       <table>
         <thead>
           <tr>

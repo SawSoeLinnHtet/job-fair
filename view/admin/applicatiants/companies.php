@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php 
+  $title = "Companies";
+?>
 <?php
 
 include("../../../vendor/autoload.php");
@@ -15,7 +17,7 @@ $companies = $table->getAll();
 
 <section class="main-content">
   <div class="related_header">
-    <p>Company Lists</p>
+    <p>LEE PEL</p>
   </div>
   <div class="related_area">
     <?php if (count($companies) !== 0) : ?>

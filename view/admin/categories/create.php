@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+$title = "Categories-Create";
+?>
 <?php include("../layouts/header.php") ?>
 
 <section class="main-content">

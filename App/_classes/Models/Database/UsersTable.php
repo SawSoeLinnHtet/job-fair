@@ -115,7 +115,7 @@
       
       return $statement->rowCount();
     }
-    public function edit($id, $name, $email, $phone_number, $address, $city,  $postal_code, $pf_image){
+    public function edit($data){
       $query = "
         UPDATE users SET 
         name = :name, 
@@ -131,14 +131,14 @@
       $statement = $this->db->prepare($query);
 
       $statement->execute([
-        ":name" => $name,
-        ":email" => $email,
-        ":phone_number" => $phone_number,
-        ":address" => $address,
-        ":city" => $city,
-        ":image" => $pf_image,
-        ":postal_code" => $postal_code,
-        ":id" => $id
+        ":name" => $data['name'],
+        ":email" => $data['email'],
+        ":phone_number" => $data['phone_number'],
+        ":address" => $data['address'],
+        ":city" => $data['city'],
+        ":image" => $data['image'],
+        ":postal_code" => $data['postal_code'],
+        ":id" => $data['id']
       ]);
       return $statement->rowCount();
     }

@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php 
+  $title = "Users-Create";
+?>
 <?php include("../layouts/header.php") ?>
 
 <section class="main-content">

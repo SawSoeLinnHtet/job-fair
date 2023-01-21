@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+  $title = "Companies-Index"; 
+?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -104,5 +106,4 @@ $companies = $table->getAll();
   </div>
 </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <?php include("../layouts/footer.php") ?>

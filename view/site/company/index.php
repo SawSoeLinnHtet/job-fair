@@ -1,14 +1,13 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
-
 <?php
+  include("../../../vendor/autoload.php");
 
-use Models\Database\JobsTable;
-use Models\Database\CompanyTable;
-use Models\Database\MYSQL;
+  use Models\Database\JobsTable;
+  use Models\Database\CompanyTable;
+  use Models\Database\MYSQL;
 
-$table = new CompanyTable(new MYSQL());
-$job_table = new JobsTable(new MYSQL());
-$companies = $table->getAll();
+  $table = new CompanyTable(new MYSQL());
+  $job_table = new JobsTable(new MYSQL());
+  $companies = $table->getAll();
 ?>
 <?php include("../layouts/header.php") ?>
 
@@ -31,7 +30,7 @@ $companies = $table->getAll();
       <div class="companies-wrapper">
         <?php foreach($companies as $company ): ?>
         <a href="../jobs/?compid=<?= $company->id ?>" class="company">
-          <img src="../../../public/assets/images/companies/<?= $company->image ?? "company.png" ?>" alt="">
+          <img src="../../../public/assets/images/companies/<?= $company->image ?? "default.png" ?>" alt="">
         </a>
         <?php endforeach ?>
       </div>

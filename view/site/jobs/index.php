@@ -2,13 +2,10 @@
   include("../../../vendor/autoload.php");
 
   use Models\Database\JobsTable;
-
   use Models\Database\CategoryTable;
   use Models\Database\CompanyTable;
   use Models\Database\MYSQL;
-  use Helpers\Auth;
 
-  $session_user = Auth::check();
   $timeAgo = new Westsworld\TimeAgo();
 
   $table = new JobsTable(new MYSQL());
@@ -77,53 +74,53 @@
             </div>
           </div>
         </div>
-        <?php if(count($jobs) !== 0 ): ?>
-        <div class="jobs-list">
-          <?php foreach ($jobs as $job) : ?>
-            <div class="job show_job_info" data-id="<?= $job->id ?>">
-              <div class="job-logo">
-                <img src="../../../public/assets/images/companies/<?= $job->company_image ?? "company.png" ?>" alt="company image">
-              </div>
-              <div class="job-description">
-                <div class="job-text-small">
-                  <h5 class="company-name">
-                    <?= $job->company_name ?>
-                  </h5>
-                  <p class="position">
-                    <?= $job->name ?>
-                  </p>
-                  <p class="location-view">
-                    <span><i class="ri-map-pin-line"></i><?= $job->address ?></span>
-                    <span><i class="ri-eye-line"></i>view</span>
-                  </p>
-                  <p class="post-info">
-                    <span><?= $timeAgo->inWordsFromStrings($job->created_at) ?></span>/
-                    <span><?= $job->job_type_name ?></span>/
-                    <span>3 applied</span>
-                  </p>
+        <?php if (count($jobs) !== 0) : ?>
+          <div class="jobs-list">
+            <?php foreach ($jobs as $job) : ?>
+              <div class="job show_job_info" data-id="<?= $job->id ?>">
+                <div class="job-logo">
+                  <img src="../../../public/assets/images/companies/<?= $job->company_image ?? "default.png" ?>" alt="company image">
                 </div>
-                <div class="position-info">
-                  <div class="related-info">
-                    <span class="team">
-                      Team
-                    </span>
-                    <span class="team-name">
-                      Developer
-                    </span>
-                    <span class="salary">
-                      <?= $job->salary ?>
-                    </span>
+                <div class="job-description">
+                  <div class="job-text-small">
+                    <h5 class="company-name">
+                      <?= $job->company_name ?>
+                    </h5>
+                    <p class="position">
+                      <?= $job->name ?>
+                    </p>
+                    <p class="location-view">
+                      <span><i class="ri-map-pin-line"></i><?= $job->address ?></span>
+                      <span><i class="ri-eye-line"></i>view</span>
+                    </p>
+                    <p class="post-info">
+                      <span><?= $timeAgo->inWordsFromStrings($job->created_at) ?></span>/
+                      <span><?= $job->job_type_name ?></span>/
+                      <span>3 applied</span>
+                    </p>
+                  </div>
+                  <div class="position-info">
+                    <div class="related-info">
+                      <span class="team">
+                        Team
+                      </span>
+                      <span class="team-name">
+                        Developer
+                      </span>
+                      <span class="salary">
+                        <?= $job->salary ?>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          <?php endforeach ?>
-        </div>
+            <?php endforeach ?>
+          </div>
         <?php else : ?>
           <div class="alert-box">
-              <div class="alert alert-warning">
-                There is nothing right now! Please Come Back Later!
-              </div>
+            <div class="alert alert-warning">
+              There is nothing right now! Please Come Back Later!
+            </div>
           </div>
         <?php endif ?>
       </div>
@@ -157,18 +154,7 @@
           <!-- Minimum Requirement -->
           <p>Minimum Requirement</p>
           <span id="job_requirement">
-
           </span>
-          <!-- Preferred Qualification -->
-          <p>Preferred Qualification</p>
-          <ul>
-            <li>
-              Fluent in reading, writing, and speaking English.
-            </li>
-            <li>
-              Minimum of 2 years of professional experience working in a modern laboratory setting.
-            </li>
-          </ul>
         </div>
         <div class="job-about">
           <!-- Minimum Requirement -->
@@ -188,10 +174,11 @@
     </div>
   </div>
 </main>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script>
   $(document).ready(function() {
     $(".show_job_info").on("click", function(e) {
+      console.log("hello");
       e.preventDefault()
       var job_id = $(this).data("id")
 
@@ -206,15 +193,14 @@
 
           if (data.status == 1) {
             var job_detail = data.data[0];
-            var image = job_detail.company_image == null ? "company.png" : job_detail.company_image
+
+            console.log(job_detail)
+            var image = job_detail.company_image == null ? "default.png" : job_detail.company_image
 
             console.log(job_detail);
 
-
-            var href = "../../../App/controllers/bookmarks/create.php?user_id=<?= $session_user->id ?>&&job_id=" + job_detail.id
             var src = "../../../public/assets/images/companies/" + image
-            var apply_route = "../apply/form.php?job_id=" + job_detail.id
-            $("#bookmark").attr("href", href)
+            var apply_route = "../apply/form.php?job_id=" + job_detail.id 
             $("#company_logo").attr("src", src)
             $("#job_name").text(job_detail.name)
             $("#salary").text(job_detail.salary)
@@ -223,8 +209,8 @@
             $("#job_type").text(job_detail.job_type_name)
             $("#close_date").text(job_detail.close_date)
             $("#job_location").text(job_detail.address)
-            $("#job_requirement").text(job_detail.requirements)
-            $("#job_description").text(job_detail.description)
+            $("#job_requirement").html(job_detail.requirements)
+            $("#job_description").html(job_detail.description)
             $(".apply-btn").attr("href", apply_route)
             showJobInfo();
           }
@@ -242,17 +228,12 @@
   function showJobInfo() {
     find_jobs_wrap.classList.toggle("find-jobs-wrap-65")
     job_info.classList.add("show")
+    console.log("hello");
   }
 
   function closeInfo() {
     find_jobs_wrap.classList.remove("find-jobs-wrap-65")
     job_info.classList.remove("show")
-  }
-  window.onclick = (e) => {
-    if (e.target == jobs_wrap) {
-      job_info.style.display = "none"
-      console.log("hi")
-    }
   }
 </script>
 

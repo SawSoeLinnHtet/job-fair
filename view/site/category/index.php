@@ -1,14 +1,13 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
-
 <?php
+  include("../../../vendor/autoload.php");
 
-use Models\Database\JobsTable;
-use Models\Database\CategoryTable;
-use Models\Database\MYSQL;
+  use Models\Database\JobsTable;
+  use Models\Database\CategoryTable;
+  use Models\Database\MYSQL;
 
-$table = new CategoryTable(new MYSQL());
-$job_table = new JobsTable(new MYSQL());
-$categories = $table->getAll();
+  $table = new CategoryTable(new MYSQL());
+  $job_table = new JobsTable(new MYSQL());
+  $categories = $table->getAll();
 ?>
 <?php include("../layouts/header.php") ?>
 <main class="main-content">
@@ -30,22 +29,19 @@ $categories = $table->getAll();
       <div class="categories-wrapper">
         <?php foreach ($categories as $category) : ?>
           <a href="../jobs/?cataid=<?= $category->id ?>" class="category">
-            <img src="../../../public/assets/images/categories/<?= $category->image ?? "technology.png" ?>" alt="category image">
+            <img src="../../../public/assets/images/categories/<?= $category->image ?? "default.png" ?>" alt="category image">
             <p>
               <?= $category->name ?>
               <span>(<?= count($job_table->findByCategory($category->id)) ?>)<span>
             </p>
           </a>
         <?php endforeach ?>
-        <a href="#" class="text-alert-warning">
-          Alert
-        </a>
       </div>
     <?php else : ?>
       <div class="alert-box">
-          <div class="alert alert-warning">
-            There is nothing right now! Please Come Back Later!
-          </div>
+        <div class="alert alert-warning">
+          There is nothing right now! Please Come Back Later!
+        </div>
       </div>
     <?php endif ?>
   </div>

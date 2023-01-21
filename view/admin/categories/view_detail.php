@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+  $title = "Categories-Details";
+?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -38,4 +40,5 @@ $category = $table->findById($_GET["id"]);
   </div>
 </section>
 
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <?php include("../layouts/footer.php") ?>

@@ -67,7 +67,7 @@ class  CompanyTable
     $row = $statement->fetchAll();
     return $row ?? false;
   }
-  public function edit($id, $name, $type, $email, $location, $image){
+  public function edit($data){
     $query = "
       UPDATE companies SET 
       name = :name, 
@@ -80,12 +80,12 @@ class  CompanyTable
     $statement = $this->db->prepare($query);
 
     $statement->execute([
-      ":id" => $id,
-      ":name" => $name,
-      ":type" => $type,
-      ":email" => $email,
-      ":location" => $location,
-      ":image" => $image
+      ":id" => $data['id'],
+      ":name" => $data['name'],
+      ":type" => $data['type'],
+      ":email" => $data['email'],
+      ":location" => $data['location'],
+      ":image" => $data['image']
     ]);
     
     return $statement->rowCount();

@@ -1,16 +1,16 @@
 <?php
+include("../../../vendor/autoload.php");
 
-  include("../../../vendor/autoload.php");
+use Models\Database\UsersTable;
+use Models\Database\MYSQL;
+use Helpers\Auth;
 
-  use Models\Database\UsersTable;
-  use Models\Database\MYSQL;
-  use Helpers\Auth;
+$table = new UsersTable(new MYSQL());
 
-  $table = new UsersTable(new MYSQL());
+$session_user = Auth::check();
 
-  $session_user = Auth::check();
-  
-  $job_id = $_GET["job_id"] ?? "undefined";
+$job_id = $_GET["job_id"] ?? "undefined";
+$user = $table->findById($session_user[0]->id);
 ?>
 
 <!DOCTYPE html>
@@ -45,22 +45,22 @@
         </h1>
         <img src="../../../public/assets/images/applynow.jpg" alt="">
       </div>
-      <form action="../../../App/controllers/applies/create.php?user_id=<?= $session_user->id ?>&&job_id=<?= $job_id ?>" method="POST" id="form" enctype="multipart/form-data">
+      <form action="../../../App/controllers/applies/create.php?user_id=<?= $user[0]->id ?>&&job_id=<?= $job_id ?>" method="post" id="form" enctype="multipart/form-data">
         <div class="form-group">
           <label for="name">Name</label>
-          <input id="name" type="text" name="name" required value="<?= $session_user->name ?>">
+          <input id="name" type="text" name="user_name" value="<?= $user[0]->name ?>" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" name="email" required value="<?= $session_user->email ?>">
+          <input id="email" type="email" name="email" value="<?= $user[0]->email ?>" required>
         </div>
         <div class="form-group">
           <label for="number">Phone</label>
-          <input id="number" type="text" name="phonenumber" required value="<?= $session_user->phone_number  ?>">
+          <input id="number" type="text" name="phonenumber" value="<?= $user[0]->phone_number ?>" required>
         </div>
         <div class="form-group">
-          <label for="cv-form">CV <span>( only PDF and DOC )</span></label>
-          <input id="cv-form" class="file-input" type="file" name="cv_form" required>
+          <label for="cv-form">CV <span>( only PDF (size limit) and DOC )</span></label>
+          <input id="cv-form" type="file" name="cv" class="file-input">
         </div>
         <div class="form-group buttons">
           <button type="submit" class="submit">Submit</button>

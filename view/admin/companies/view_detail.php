@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+  $title = "Companies-Details"; 
+?>
 <?php
 include("../../../vendor/autoload.php");
 
@@ -22,7 +24,7 @@ $company = $table->findById($_GET["id"]);
   <div class="details-wrapper">
     <div class="wrap">
       <div class="profile-holder">
-        <img src="../../../public/assets/images/companies/<?= $company[0]->image ?? "company.png" ?>" alt="image" class="detail-img">
+        <img src="../../../public/assets/images/companies/<?= $company[0]->image ?? "default.png" ?>" alt="image" class="detail-img">
       </div>
       <div class="profile-details">
         <p class="title">

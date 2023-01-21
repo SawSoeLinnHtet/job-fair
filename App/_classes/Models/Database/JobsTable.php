@@ -98,7 +98,7 @@ class JobsTable
 
     return $statement->rowCount();
   }
-  public function edit($id, $name, $company_id, $category_id, $gender, $salary, $job_type_id, $address, $description, $requirements, $close_date){
+  public function edit($data){
 
     try {
       $query = "
@@ -119,17 +119,17 @@ class JobsTable
       $statement = $this->db->prepare($query);
 
       $statement->execute([
-        ":id" => $id,
-        ":name" => $name,
-        ":company_id" => $company_id,
-        ":category_id" => $category_id,
-        ":gender" => $gender,
-        ":salary" => $salary,
-        ":job_type_id" => $job_type_id,
-        ":address" => $address,
-        ":description" => $description,
-        ":requirements" => $requirements,
-        ":close_date" => $close_date
+        ":id" => $data['id'],
+        ":name" =>  $data['name'],
+        ":company_id" => $data['company_id'],
+        ":category_id" => $data['category_id'],
+        ":gender" => $data['gender'],
+        ":salary" => $data['salary'],
+        ":job_type_id" => $data['job_type_id'],
+        ":address" => $data['address'],
+        ":description" => $data['description'],
+        ":requirements" => $data['requirements'],
+        ":close_date" => $data['close_date']
       ]);
 
       return $statement->rowCount();

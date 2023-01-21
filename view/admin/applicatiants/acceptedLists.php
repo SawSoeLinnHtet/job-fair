@@ -1,4 +1,6 @@
-<?php include("../../../App/_classes/Helpers/RouteAuthCheck.php") ?>
+<?php
+$title = "Accepted Lists";
+?>
 <?php
 
 include("../../../vendor/autoload.php");
@@ -28,19 +30,7 @@ $appliciants = $table->findByAccept(1, $_GET["job_id"]);
     </div>
   </div>
   <div class="related_area">
-    <div class="alert-box">
-      <?php if (isset($_GET['mail_success']) == 1) : ?>
-        <div class="alert alert-success">
-          Mail Send to This Person
-        </div>
-      <?php endif ?>
-      <?php if (isset($_GET['mail_fail']) == 1) : ?>
-        <div class="alert alert-danger">
-          Mail is not Success
-        </div>
-      <?php endif ?>
-    </div>
-    <div class="applicant_companies">
+    <div class="applicant_relate">
       <div class="table-holder">
         <table>
           <thead>
@@ -79,7 +69,7 @@ $appliciants = $table->findByAccept(1, $_GET["job_id"]);
                     <a href="../../../public/assets/images/cv_form/<?= $appliciant->cv_name ?>">Tap to Download</a>
                   </td>
                   <td>
-                    <a href="../../../App/controllers/mails/create.php?job_id=<?= $appliciant->job_id ?>&&user_id=<?= $appliciant->user_id ?>" class="mail-button">
+                    <a href="./message.php?job_id=<?= $appliciant->job_id ?>&&user_id=<?= $appliciant->user_id ?>" class="mail-button">
                       <span>To Send Mail </span><i class="ri-chat-upload-line"></i>
                     </a>
                   </td>
@@ -110,5 +100,4 @@ $appliciants = $table->findByAccept(1, $_GET["job_id"]);
   }
 </script>
 
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <?php include("../layouts/footer.php") ?>

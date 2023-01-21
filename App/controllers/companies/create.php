@@ -34,7 +34,7 @@ if($_FILES['cover_image']['name'] == ""){
     "type" => $_POST['type'] ?? "undefined",
     "email" => $_POST['email'] ?? "undefined",
     "location" => $_POST['location'] ?? "undefined",
-    "image" => $image
+    "image" => $image ?? null,
   ];
 
   if ($table) {
