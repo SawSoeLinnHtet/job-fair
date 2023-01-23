@@ -6,6 +6,7 @@
   use Helpers\HTTP; 
 
   $table = new ApplyListsTable(new MYSQL());
+  
   $cv_name = $_FILES['cv']['name'];
   $cv_error = $_FILES['cv']['error'];
   $cv_tmp = $_FILES['cv']['tmp_name'];

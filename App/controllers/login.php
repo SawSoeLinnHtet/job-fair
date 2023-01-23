@@ -18,10 +18,6 @@ $user = $table->findByEmailAndPassword($email, $password);
 if($user){
   session_start();
   $_SESSION["user"] = $user;
-
-  $_SESSION["start"] = time();
-  $_SESSION["expire"] = $_SESSION["start"] + (10 * 60);
-
   if($user[0]->role_id == 1){
     HTTP::redirect("/auth/option.php");
   }else{

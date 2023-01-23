@@ -1,5 +1,9 @@
 <?php
 $title = "Categories-Create";
+
+use Helpers\Auth;
+
+Auth::check();
 ?>
 <?php include("../layouts/header.php") ?>
 

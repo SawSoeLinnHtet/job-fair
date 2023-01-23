@@ -7,6 +7,9 @@ include("../../../vendor/autoload.php");
 
 use Models\Database\CategoryTable;
 use Models\Database\MYSQL;
+use Helpers\Auth;
+
+Auth::check();
 
 $table = new CategoryTable(new MYSQL());
 
@@ -29,7 +32,7 @@ $categories = $table->getAll();
   <div class="alert-box">
     <?php if (isset($_GET['create_success']) == 1) : ?>
       <div class="alert alert-success">
-        New User Is Created!
+        New Category Is Created!
       </div>
     <?php endif ?>
     <?php if (isset($_GET['edit_success']) == 1) : ?>

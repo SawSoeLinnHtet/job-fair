@@ -7,6 +7,9 @@ $title = "Mail Box";
 
   use Models\Database\UsersTable;
   use Models\Database\MYSQL;
+  use Helpers\Auth;
+
+  Auth::check();
 
   $table = new UsersTable(new MYSQL());
 

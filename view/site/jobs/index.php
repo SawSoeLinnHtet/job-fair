@@ -1,27 +1,31 @@
 <?php
-  include("../../../vendor/autoload.php");
+$title = "Jobs";
+include("../../../vendor/autoload.php");
 
-  use Models\Database\JobsTable;
-  use Models\Database\CategoryTable;
-  use Models\Database\CompanyTable;
-  use Models\Database\MYSQL;
+use Models\Database\JobsTable;
+use Models\Database\CategoryTable;
+use Models\Database\CompanyTable;
+use Models\Database\MYSQL;
+use Helpers\Auth;
 
-  $timeAgo = new Westsworld\TimeAgo();
+Auth::check();
 
-  $table = new JobsTable(new MYSQL());
-  $category = new CategoryTable(new MYSQL());
-  $company = new CompanyTable(new MYSQL());
-  $category_limits = $category->getLimit();
+$timeAgo = new Westsworld\TimeAgo();
 
-  if (isset($_GET["cataid"])) {
-    $category_name = $category->findById($_GET["cataid"]);
-    $jobs = $table->findByCategory($_GET["cataid"]);
-  } else if (isset($_GET["compid"])) {
-    $company_name = $company->findById($_GET["compid"]);
-    $jobs = $table->findByCompany($_GET["compid"]);
-  } else {
-    $jobs = $table->getAll();
-  }
+$table = new JobsTable(new MYSQL());
+$category = new CategoryTable(new MYSQL());
+$company = new CompanyTable(new MYSQL());
+$category_limits = $category->getLimit();
+
+if (isset($_GET["cataid"])) {
+  $category_name = $category->findById($_GET["cataid"]);
+  $jobs = $table->findByCategory($_GET["cataid"]);
+} else if (isset($_GET["compid"])) {
+  $company_name = $company->findById($_GET["compid"]);
+  $jobs = $table->findByCompany($_GET["compid"]);
+} else {
+  $jobs = $table->getAll();
+}
 ?>
 <?php include("../layouts/header.php") ?>
 
@@ -152,14 +156,18 @@
             Close On - <span id="close_date"></span>
           </p>
           <!-- Minimum Requirement -->
+          <p>Description</p>
+          <span id="job_description"></span>
+          <!-- <span id="job_description">
+          </span> -->
           <p>Minimum Requirement</p>
           <span id="job_requirement">
           </span>
         </div>
         <div class="job-about">
           <!-- Minimum Requirement -->
-          <p>Description</p>
-          <span id="job_description"></span>
+          <p>Responsibilities</p>
+          <span id="job_responsibility"></span>
           <a href="#">
             <p>Read More<i class="ri-arrow-down-s-fill"></i></p>
           </a>
@@ -200,7 +208,7 @@
             console.log(job_detail);
 
             var src = "../../../public/assets/images/companies/" + image
-            var apply_route = "../apply/form.php?job_id=" + job_detail.id 
+            var apply_route = "../apply/form.php?job_id=" + job_detail.id
             $("#company_logo").attr("src", src)
             $("#job_name").text(job_detail.name)
             $("#salary").text(job_detail.salary)
@@ -211,6 +219,7 @@
             $("#job_location").text(job_detail.address)
             $("#job_requirement").html(job_detail.requirements)
             $("#job_description").html(job_detail.description)
+            $("#job_responsibility").html(job_detail.responsibility)
             $(".apply-btn").attr("href", apply_route)
             showJobInfo();
           }

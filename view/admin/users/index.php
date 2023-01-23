@@ -1,11 +1,13 @@
-<?php 
-  $title = "Users-Index";
-?>
 <?php
+
+$title = "Users-Index";
 include("../../../vendor/autoload.php");
 
 use Models\Database\UsersTable;
 use Models\Database\MYSQL;
+use Helpers\Auth;
+
+Auth::check();
 
 $table = new UsersTable(new MYSQL());
 

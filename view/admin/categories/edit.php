@@ -6,6 +6,9 @@ include("../../../vendor/autoload.php");
 
 use Models\Database\CategoryTable;
 use Models\Database\MYSQL;
+use Helpers\Auth;
+
+Auth::check();
 
 $table = new CategoryTable(new MYSQL());
 $category = $table->findById($_GET["id"]);

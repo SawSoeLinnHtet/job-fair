@@ -1,5 +1,9 @@
 <?php
   $title = "Dashboard";
+  include("../../../vendor/autoload.php");
+  use Helpers\Auth;
+
+  Auth::check();
 ?>
 <?php include("../layouts/header.php") ?>
 

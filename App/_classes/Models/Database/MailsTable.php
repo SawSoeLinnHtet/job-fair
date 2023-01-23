@@ -48,4 +48,13 @@
 
       return $statement->fetchAll() ?? null;
     }
+    public function delete($id){
+      $query = "DELETE FROM mails WHERE id = :id";
+
+      $statement = $this->db->prepare($query);
+      $statement->execute([
+        ":id" => $id
+      ]);
+      return $statement->rowCount();
+    }
   }

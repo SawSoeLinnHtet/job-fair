@@ -5,7 +5,7 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
-  width: 100%;
+  width: 100%;Responsibility
   position: relative;
 }
 /* ---header--- */
@@ -723,7 +723,7 @@ body{
 
 .job-profile{
   width: 70%;
-  height: 150px;
+  height: auto;
   background-color: #fff;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, .7);
   display: flex;
@@ -731,7 +731,7 @@ body{
   border-radius: 10px;
 }
 .job-profile img{
-  width: 120px;
+  width: 150px;
   height: auto;
   padding: 10px;
 }
@@ -750,8 +750,6 @@ body{
 }
 .job-profile .text ul{
   margin-top: 30px;
-  display: flex;
-  gap: 20px;
 }
 .job-profile .text ul li{
   display: inline-block;
@@ -765,6 +763,9 @@ body{
   font-size: 14px;
   color:rgb(59, 58, 58);
   margin-right: 10px;
+}
+.job-profile .text ul li:last-child{
+  margin-top: 10px;
 }
 .job-text{
   color: #000;
@@ -837,8 +838,6 @@ body{
   justify-content: center;
 }
 .applicant_company{
-  width: 120px;
-  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1058,6 +1057,9 @@ body{
   .details-wrapper .wrap .details-footer .edit-btn{
     margin-top: 10px;
   }
+  .applicant_companies{
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 @media (max-width: 590px){
   .related_area{
@@ -1133,5 +1135,8 @@ body{
   }
   .profile-wrapper .details-text .profile-field{
     margin: 10px;
+  }
+  .applicant_companies{
+    grid-template-columns: repeat(2, 1fr);
   }
 }

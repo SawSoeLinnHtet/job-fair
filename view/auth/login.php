@@ -1,3 +1,4 @@
+<?php $title="Login" ?>
 <?php include("layouts/header.php") ?>
 <div class="poster">
   <img src="../../public/assets/images/auth.jpg" alt="">

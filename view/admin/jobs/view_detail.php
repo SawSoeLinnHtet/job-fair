@@ -1,11 +1,14 @@
-<?php 
-  $title = "Jobs-Details";
+<?php
+$title = "Jobs-Details";
 ?>
 <?php
 include("../../../vendor/autoload.php");
 
 use Models\Database\JobsTable;
 use Models\Database\MYSQL;
+use Helpers\Auth;
+
+Auth::check();
 
 $timeAgo = new Westsworld\TimeAgo();
 
@@ -69,6 +72,12 @@ $job = $table->findById($_GET["id"]);
       </h2>
       <span>
         <?= $job[0]->requirements ?>
+      </span>
+      <h2>
+        Responsibility
+      </h2>
+      <span>
+        <?= $job[0]->responsibility ?>
       </span>
       <div class="option">
         <a class="updated">

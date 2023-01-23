@@ -8,6 +8,9 @@ include("../../../vendor/autoload.php");
 use Models\Database\JobsTable;
 use Models\Database\ApplyListsTable;
 use Models\Database\MYSQL;
+use Helpers\Auth;
+
+Auth::check();
 
 $company_id = $_GET["company_id"] ?? "undefined";
 $cata_id = $_GET["cate_id"] ?? "undefined";

@@ -1,7 +1,7 @@
 <?php include("./layouts/header.php") ?>
 
 <div class="option_wrapper">
-  <a href="../admin/dashboard/" class="admin">
+  <a href="../admin/users/" class="admin">
     <i class="ri-shield-user-fill"></i>
     <span>
       Admin

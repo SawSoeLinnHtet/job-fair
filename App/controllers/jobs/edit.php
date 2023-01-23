@@ -19,7 +19,8 @@
     "address" => $_POST["address"] ?? "undefined",
     "description" => $_POST["description"] ?? "undefined",
     "requirements" => $_POST["requirements"] ?? "undefined",
-    "close_date" => $_POST["close_date"] ?? "undefined"
+    "close_date" => $_POST["close_date"] ?? "undefined",
+    "responsibility" => $_POST["responsibility"] ?? "undefined"
   ];
 
   if($table){

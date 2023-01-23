@@ -1,7 +1,7 @@
 <?php 
 
   include("../../vendor/autoload.php");
-  
+
   use Helpers\HTTP;
 
   session_start();

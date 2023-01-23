@@ -23,7 +23,7 @@
     }
     public function getAll(){
       $statement = $this->db->query(
-        "SELECT * FROM categories ORDER BY categories.name"
+        "SELECT * FROM categories ORDER BY name ASC"
       );
       return $statement->fetchAll();
     }

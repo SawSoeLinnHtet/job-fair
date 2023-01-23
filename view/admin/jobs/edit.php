@@ -7,6 +7,9 @@ use Models\Database\CompanyTable;
 use Models\Database\CategoryTable;
 use Models\Database\JobTypesTable;
 use Models\Database\MYSQL;
+use Helpers\Auth;
+
+Auth::check();
 
 $job_table = new JobsTable(new MYSQL());
 $company_table = new CompanyTable(new MYSQL());
@@ -110,6 +113,13 @@ $types = $job_types_table->getAll();
         <label for="description">Description<span class="required">*</span></label>
         <div class="input-holder">
           <textarea name="description" class="summernote" id="description" required><?= $job[0]->description ?>
+          </textarea>
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="responsibility">Responsibility<span class="required">*</span></label>
+        <div class="input-holder">
+          <textarea name="responsibility" class="summernote" id="responsibility" required><?= $job[0]->responsibility ?>
           </textarea>
         </div>
       </div>

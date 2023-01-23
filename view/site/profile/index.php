@@ -1,4 +1,5 @@
 <?php
+$title = "Profile";
 include("../../../vendor/autoload.php");
 
 use Models\Database\UsersTable;

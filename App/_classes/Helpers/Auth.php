@@ -5,9 +5,9 @@ use Helpers\HTTP;
 
 class Auth
 {
-  static function check(){
+  static function check(){ 
     session_start();
-    if($_SESSION["user"]){
+    if(isset($_SESSION["user"])){
       return $_SESSION["user"];
     }else{
       HTTP::redirect("/auth/login.php");

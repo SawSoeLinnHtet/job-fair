@@ -25,7 +25,8 @@ class JobsTable
           description,
           requirements,
           close_date,
-          created_at
+          created_at,
+          responsibility
         ) VALUES (
           :name,
           :company_id,
@@ -37,7 +38,8 @@ class JobsTable
           :description,
           :requirements,
           :close_date,
-          now()
+          now(),
+          :responsibility
         )
       ";
     $statement = $this->db->prepare($query);
@@ -113,7 +115,8 @@ class JobsTable
       description = :description,
       requirements = :requirements,
       close_date = :close_date,
-      updated_at = now()
+      updated_at = now(),
+      responsibility = :responsibility
       WHERE id = :id
     ";
       $statement = $this->db->prepare($query);
@@ -129,7 +132,8 @@ class JobsTable
         ":address" => $data['address'],
         ":description" => $data['description'],
         ":requirements" => $data['requirements'],
-        ":close_date" => $data['close_date']
+        ":close_date" => $data['close_date'],
+        "responsibility" => $data['responsibility']
       ]);
 
       return $statement->rowCount();

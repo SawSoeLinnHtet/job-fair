@@ -8,6 +8,9 @@ include("../../../vendor/autoload.php");
 use Models\Database\ApplyListsTable;
 use Models\Database\JobsTable;
 use Models\Database\MYSQL;
+use Helpers\Auth;
+
+Auth::check();
 
 $table = new ApplyListsTable(new MYSQL());
 $job_table = new JobsTable(new MYSQL());

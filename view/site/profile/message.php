@@ -1,4 +1,5 @@
 <?php
+$title = "Profile | Message";
 include("../../../vendor/autoload.php");
 
 use Models\Database\UsersTable;
@@ -6,12 +7,12 @@ use Models\Database\MailsTable;
 use Models\Database\MYSQL;
 use Helpers\Auth;
 
-$session_user = Auth::check();
+Auth::check();
 
 $table = new UsersTable(new MYSQL());
 $mail_table = new MailsTable(new MYSQL());
 
-$mails = $mail_table->getByUser($session_user[0]->id);
+$mails = $mail_table->getByUser($_SESSION["user"][0]->id);
 ?>
 <?php include("../layouts/header.php") ?>
 
@@ -28,20 +29,29 @@ $mails = $mail_table->getByUser($session_user[0]->id);
           </button>
         </div>
         <hr>
-        <?php foreach($mails as $mail): ?>
-          <div class="mail-wrap">
-            <h3>
-              <?= $mail->title ?>
-            </h3>
-            <p class="message">
-              <?= $mail->message ?> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione vitae impedit officiis repudiandae eos in itaque accusantium perspiciatis culpa, dolorem, tenetur fugit voluptatem, corrupti ad! Quia, voluptates. Error, tenetur asperiores.
-            </p>
-            <p class="sender">
-              From 
-              <span> <?= $mail  ->sender ?></span>
-            </p>
+        <?php if(count($mails) !== 0): ?>
+          <?php foreach ($mails as $mail) : ?>
+            <div class="mail-wrap">
+              <a href="../../../App/controllers/mails/delete.php?id=<?= $mail->id ?>" class="delete_btn">
+                <i class="ri-close-circle-fill"></i>
+              </a>
+              <h3>
+                <?= $mail->title ?>
+              </h3>
+              <p class="message">
+                <?= $mail->message ?>
+              </p>
+              <p class="sender">
+                From
+                <span> <?= $mail->sender ?></span>
+              </p>
+            </div>
+          <?php endforeach ?>
+        <?php else: ?>
+          <div class="alert">
+            <p>Nothing Here!</p>
           </div>
-        <?php endforeach ?>
+        <?php endif ?>
       </div>
     </div>
   </div>

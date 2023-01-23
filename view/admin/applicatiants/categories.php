@@ -7,6 +7,9 @@
   use Models\Database\CategoryTable;
   use Models\Database\JobsTable;
   use Models\Database\MYSQL;
+  use Helpers\Auth;
+
+  Auth::check();
 
   $table = new JobsTable(new MYSQL());
 

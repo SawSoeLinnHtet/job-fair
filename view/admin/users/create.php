@@ -1,5 +1,8 @@
 <?php 
   $title = "Users-Create";
+  use Helpers\Auth;
+
+  Auth::check();
 ?>
 <?php include("../layouts/header.php") ?>
 

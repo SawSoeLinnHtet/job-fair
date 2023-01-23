@@ -1,14 +1,15 @@
 <?php
-$title = "Admin-Profile";
-include("../../../vendor/autoload.php");
+  $title = "Admin-Profile";
+  include("../../../vendor/autoload.php");
 
-use Models\Database\UsersTable;
-use Models\Database\MYSQL;
-use Helpers\Auth;
+  use Models\Database\UsersTable;
+  use Models\Database\MYSQL;
+  use Helpers\Auth;
 
-Auth::check();
-$table = new UsersTable(new MYSQL());
-$user = $table->findById($_SESSION["user"][0]->id)[0];
+  Auth::check();
+
+  $table = new UsersTable(new MYSQL());
+  $user = $table->findById($_SESSION["user"][0]->id)[0];
 ?>
 <?php include("../layouts/header.php") ?>
 

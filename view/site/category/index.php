@@ -1,9 +1,13 @@
 <?php
+  $title = "Category";
   include("../../../vendor/autoload.php");
 
   use Models\Database\JobsTable;
   use Models\Database\CategoryTable;
   use Models\Database\MYSQL;
+  use Helpers\Auth;
+
+  Auth::check();
 
   $table = new CategoryTable(new MYSQL());
   $job_table = new JobsTable(new MYSQL());

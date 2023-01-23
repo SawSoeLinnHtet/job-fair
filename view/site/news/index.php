@@ -1,3 +1,12 @@
+<?php
+  $title = "News";
+  include("../../../vendor/autoload.php");
+
+  use Helpers\Auth;
+
+  Auth::check();
+
+?>
 <?php include("../layouts/header.php") ?>
 
 <main class="main-content">

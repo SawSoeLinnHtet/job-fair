@@ -7,6 +7,9 @@ include("../../../vendor/autoload.php");
 
 use Models\Database\CompanyTable;
 use Models\Database\MYSQL;
+use Helpers\Auth;
+
+Auth::check();
 
 $table = new CompanyTable(new MYSQL());
 
